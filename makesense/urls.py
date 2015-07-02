@@ -13,9 +13,16 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib import admin
 
-urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-]
+urlpatterns = patterns('makesense.views',
+    url(r'^$','home'),
+    url(r'^chapter/(?P<chapter_num>\d+)/(?P<slug>[\w-]+)/$','chapter'),
+    url(r'^page/(?P<page_id>\d+)/(?P<slug>[\w-]+)/$','page'),
+    url(r'^term/(?P<word_type_slug>)\w+)/(?P<term_slug>[\w-]+)/$','term'),
+)
+
+# urlpatterns = [
+#     url(r'^admin/', include(admin.site.urls)),
+# ]
