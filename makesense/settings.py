@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djax',
+    'makesense',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,8 +78,10 @@ WSGI_APPLICATION = 'makesense.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME','makesense'),
+        'USER': os.environ.get('DB_USER',''),
+        'PASSWORD': os.environ.get('DB_PASSWORD',''),
     }
 }
 
@@ -93,10 +97,34 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
+local_static = os.environ.get('MS_LOCALSTATIC',None)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
+
+# Storage
+if not local_static:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATICFILES_STORAGE = DEFAULT_FILE_STORAGE
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME','')
+    STATIC_HOST = os.environ.get('MS_STATIC_HOST','//s3.amazonaws.com')
+    STATIC_URL = '%s/%s/' % (STATIC_HOST,AWS_STORAGE_BUCKET_NAME)
+
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+if DEBUG:
+    MEDIA_ROOT = 'media/'
+    MEDIA_URL = '/media/'
+
+AXILENT_API_KEY = os.environ.get('AXILENT_API_KEY','')
+
