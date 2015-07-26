@@ -1,1 +1,426 @@
-TERM
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>How to Make Sense of Any Mess </title>
+	<meta name="description" content="Information Architecture for Everybody. Based on a book by Information Architect, Abby Covert.">
+	<meta name="copyright" content="Copyright (c) 2015 Abby the IA">
+	<meta name="author" content="Abby Covert">
+	<style type="text/css" media="screen">
+	
+/* Basic Text Styles (over-ridded by div specific styles below) */
+
+	p {color: #000000; font-size: 1em;}
+	a:link {color: #000000; font-family: garamond; text-decoration: none;}
+	a:visited {color: #000000;}
+	a:hover {color:#ef1414;}
+	a:active {color: #000000;}
+	ul {list-style-type: none; margin:0;line-height: 1.4em;}
+
+
+	h1 {font-family: helvetica; text-align: left; font-size: 1.5em; line-height:1.5em;}
+	h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	h3 {font-family: garamond; text-align: left; font-size: 1.2em;line-height:1.2em;}
+	h4 {font-family: garamond; text-align: left; font-size: .8em;line-height:1em;}
+	
+/* Positioning div styles and text styling over-rides by div */
+
+.wrapper {overflow:hidden; max-width: 800px; float: center; margin:0 auto;}
+
+#header {padding:5px 5px 5px 5px; background:#ffffff;}
+	#header h1 {font-family: helvetica; text-align: left; font-size: 1em; line-height:.25em;}
+	#header h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header h3 {font-family: garamond; text-align: left; font-size: 2em;line-height:1em;}
+	#header a:link{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:visited{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:hover{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:active{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+
+#nav {width: 800px; min-width: 480px; padding:10px 0px 10px 0px; background:#000000;color: #ffffff;}
+	#nav ul {margin:0; padding:0; list-style:none;}
+	#nav li {display:inline; margin:0; padding:0;}
+	#nav a:link {text-decoration: none; color: #ffffff; font-family: helvetica; padding:15px 15px 15px 15px; font-weight: bold;}
+	#nav a:visited {text-decoration: none; color: #ffffff; font-family: helvetica; padding:15px 15px 15px 15px; font-weight: bold;}
+	#nav a:hover {background: #ffffff; color:#ef1414;}
+	
+#search {float: right; width: 300px; margin: 20px; 120px; 10px; 10px; background:#ffffff;color: #ffffff;}
+	input[type="text"] {width: 180px; padding: 5px;}
+	button {padding:7px; background-color: #000000; border: 1px solid #ffffff; color:#ffffff; text-decoration:none; font-weight: bold;}
+	#search button:hover {color: ef1414;background-color:e3e2e2;}
+
+#footerWrapper {clear:both; padding-top: 30px;}
+#footer {clear:both; padding:5px 20px; width:800px; background:#000000;}
+    #footer p {color:ffffff; font-family: helvetica; font-size:1 em;}
+    #footer a:link { text-decoration: none; color: #ffffff; font-family: helvetica; }
+    #footer a:visited {color: #ffffff;}
+	#footer a:hover {color:#ef1414;}
+
+/* Template Specific Styles */
+
+.highlight {background-color:#fbfc9d;}
+
+#Results {background-color: ffffff;float:left; margin-right:20px; min-width:400px; padding:10px 10px;}
+	#Results p {font: garamond; max-width: 400px; min-width: 320px; }
+	#Results ul {list-style-type: circle; max-width: 320px; line-height: 1.25em;}
+	#Results h2{max-width: 350px; color: #000000; font-family: garamond; text-align: left; font-size: 2em; line-height:1em;}
+	#Results a{font-weight: bold; text-decoration: underline; padding: 1px;}
+
+#Sidebar {border-style: solid; border-width: thin; border-color: #dcdcdc; background: #ffffff; overflow:hidden; width:240px; padding:10px 60px 10px 20px; Float:right;}
+	#Sidebar h3{font-size: 1em; font-family: Garamond; color: 000000;}
+	#sidebar a:link { color: #000000; font-size: 1em; padding:5px; font-weight: bold;}
+	#sidebar a:hover {color: #ef1414; padding:5px; font-weight: bold;}
+	#sidebar ul{line-height: 1.5em;}
+	#SideBar .tg  {text-align: center; width:220px;border-collapse:collapse;border-spacing:0;}
+	#Sidebar .tg td{padding: 5px; color: #848484; font-family:garamond, serif;font-size:1em;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+	#Sidebar .tg th{padding: 5px; color: #848484; font-family:garamond, serif;font-size:1em;font-weight:normal;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+
+/* Responsive Standard Styles */
+
+@media screen and (max-width: 800px) {
+
+	#header {min-width: 320px;}
+	#search {float: none; width: 100%;}
+	
+	#nav {width: 100%; min-width: 480px; padding:10px 0px 10px 0px; background:#000000;color: #ffffff;}
+		#nav ul {margin:0; padding:0; list-style:none;}
+		#nav li {display:block; padding:10px;}
+		#nav a:link {font-size: .9em; line-height: 1em;text-decoration: none; color: #ffffff; font-family: helvetica; padding:10px 10px 10px 10px; font-weight: bold;}
+		#nav a:visited {color: #ffffff;}
+		#nav a:hover {background: #ffffff; color:#ef1414;}
+		#nav a:active {color: #ffffff;}
+	
+	#footer {width: 100%;}
+
+/* Responsive Template Specific Styles */
+
+	#Results {float: none; margin-right:0; width:auto; border:0;}
+		#Results p {max-width: 320px; min-width: 100px;}
+		#Results h2 {max-width: 320px; min-width: 100px;}
+	
+	#Sidebar {display: none; float: none;}
+
+}
+
+</style>
+
+</head>
+<div class="wrapper">
+<div id="header"><h1>How to Make Sense of Any Mess <a href="http://www.abbytheia.com">by Abby Covert<a></h1>
+</div>
+
+<div id="nav">
+<ul>
+<li><a href="TOC.html">Table of Contents</a></li>
+<li><a href="Lexicon.html">Indexed Lexicon</a></li>
+<li><a href="IAResources.html">IA Resources</a></li>
+<li><a href="http://www.amazon.com/How-Make-Sense-Any-Mess/dp/1500615994/ref=sr_1_1?ie=UTF8&qid=1415130655&sr=8-1&keywords=how+to+make+sense+of+any+mess" target="new">Buy the Book</a></li>
+</ul>
+</div>
+
+<div id="search">
+	<input type="text" name="search"> <button type="button">Search Site</button></li>
+
+</div>
+
+<div id="Results">
+
+
+<h2>{{ term.term }} ({{ term.word_type_slug }}.)</h2>
+<p><b>Definition:</b> {{ term.description }}</p>
+<p><b>Also referenced as:</b> Messy (adj), Messiness (n.), Messes (n.)
+<p><b>Related to:</b> <a href="#">Related Term</a>, <a href="#">Related Term</a>
+<br>
+
+</div>
+<div id="Results">
+<hr>
+<p><b>The word <b>mess</b> was used 55 times across 38 pages</b></p>
+{% for page in term.usage.all %}
+<hr>
+<p><a href="#">Chapter {{ page.chapter.pk }}: {{ page.chapter }} | Page {{ page.pk }} </a></p>
+{{ page.body|safe }}
+<br>
+<hr>
+{% endfor %}
+</div>
+<div id="Sidebar">
+<h3>Chapter 1</h3>
+<table class="tg">
+  <tr>
+    <th class="pageCell">10</th>
+    <th class="pageCell" bgcolor="fbfc9d"><a href="HTMSOAM_PagePage.html">11</a></th>
+    <th class="pageCell" bgcolor="fbfc9d"><a href="#">12</a></th>
+    <th class="pageCell">13</th>
+    <th class="pageCell">14</th>
+  </tr>
+  <tr>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">15</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">16</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">17</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">18</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">19</a></td>
+  </tr>
+  <tr>
+    <td class="pageCell">20</td>
+    <td class="pageCell">21</td>
+    <td class="pageCell">22</td>
+    <td class="pageCell">23</td>
+    <td class="pageCell">24</td>
+  </tr>
+  <tr>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">25</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">26</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">27</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">28</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">29</a></td>
+  </tr>
+
+</table>
+
+<h3>Chapter 2</h3>
+
+<table class="tg">
+  <tr>
+    <th class="pageCell">32</th>
+    <th class="pageCell"bgcolor="fbfc9d"><a href="#">33</a></th>
+    <th class="pageCell"bgcolor="fbfc9d"><a href="#">34</a></th>
+    <th class="pageCell"bgcolor="fbfc9d"><a href="#">35</a></th>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">36</a></td>
+
+  </tr>
+  <tr>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">37</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">38</a></td>
+    <td class="pageCell">39</td>
+    <td class="pageCell">40</td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">41</a></td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">42</td>
+    <td class="pageCell">43</td>
+    <td class="pageCell">44</td>
+    <td class="pageCell">45</td>
+    <td class="pageCell">46</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">47</td>
+
+  </tr>
+
+</table>
+<h3>Chapter 3</h3>
+
+<table class="tg">
+  <tr>
+    <th class="pageCell"bgcolor="fbfc9d"><a href="#">50</a></th>
+    <th class="pageCell"bgcolor="fbfc9d"><a href="#">51</a></th>
+    <th class="pageCell">52</th>
+    <th class="pageCell">53</th>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">54</a></td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">55</td>
+    <td class="pageCell">56</td>
+    <td class="pageCell">57</td>
+    <td class="pageCell">58</td>
+    <td class="pageCell">59</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">60</td>
+    <td class="pageCell">61</td>
+    <td class="pageCell">62</td>
+    <td class="pageCell">63</td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">64</a></td>
+
+  </tr>
+  <tr>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">65</a></td>
+    <td class="pageCell">66</td>
+    <td class="pageCell">67</td>
+    <td class="pageCell">68</td>
+    <td class="pageCell">69</td>
+  </tr>
+    <tr>
+    <td class="pageCell">70</td>
+    <td class="pageCell">71</td>
+    <td class="pageCell">72</td>
+    <td class="pageCell">73</td>
+    <td class="pageCell">74</td>
+  </tr>
+      <tr>
+    <td class="pageCell">75</td>
+    <td class="pageCell">76</td>
+    <td class="pageCell">77</td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">78</a></td>
+    <td class="pageCell">79</td>
+  </tr>
+
+</table>
+<h3>Chapter 4</h3>
+
+<table class="tg">
+  <tr>
+    <th class="pageCell">82</th>
+    <th class="pageCell">83</th>
+    <th class="pageCell">84</th>
+    <th class="pageCell">85</th>
+    <td class="pageCell">86</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">87</a></td>
+    <td class="pageCell">88</td>
+    <td class="pageCell">89</td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">90</a></td>
+    <td class="pageCell">91</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">91</td>
+    <td class="pageCell">92</td>
+    <td class="pageCell">93</td>
+    <td class="pageCell">94</td>
+    <td class="pageCell">95</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">96</td>
+    <td class="pageCell">97</td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">98</a></td>
+    <td class="pageCell">99</td>
+    <td class="pageCell">100</td>
+  </tr>
+    <tr>
+    <td class="pageCell">101</td>
+    <td class="pageCell">102</td>
+    <td class="pageCell">103</td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">104</a></td>
+    <td class="pageCell">105</td>
+
+
+</table>
+<h3>Chapter 5</h3>
+
+<table class="tg">
+  <tr>
+    <th class="pageCell"bgcolor="fbfc9d"><a href="#">108</a></th>
+    <th class="pageCell">109</th>
+    <th class="pageCell">110</th>
+    <th class="pageCell">111</th>
+    <td class="pageCell">112</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">113</td>
+    <td class="pageCell">114</td>
+    <td class="pageCell">115</td>
+    <td class="pageCell">116</td>
+    <td class="pageCell">117</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">118</td>
+    <td class="pageCell">119</td>
+    <td class="pageCell">120</td>
+    <td class="pageCell">121</td>
+
+  </tr>
+
+</table>
+
+<h3>Chapter 6</h3>
+
+<table class="tg">
+  <tr>
+    <th class="pageCell"bgcolor="fbfc9d"><a href="#">124</a></th>
+    <th class="pageCell">125</th>
+    <th class="pageCell">126</th>
+    <th class="pageCell">127</th>
+    <td class="pageCell">128</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">129</td>
+    <td class="pageCell">130</td>
+    <td class="pageCell">131</td>
+    <td class="pageCell">132</td>
+    <td class="pageCell">133</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">134</td>
+    <td class="pageCell">135</td>
+    <td class="pageCell">136</td>
+    <td class="pageCell">137</td>
+	 <td class="pageCell">138</td>
+
+
+  </tr>
+  
+    <tr>
+    <td class="pageCell">139</td>
+    <td class="pageCell">140</td>
+    <td class="pageCell">141</td>
+    <td class="pageCell">142</td>
+    <td class="pageCell">143</td>
+
+  </tr>
+  <tr>
+
+    <td class="pageCell"bgcolor="fbfc9d"><a href="#">144<a/></td>
+    <td class="pageCell">145</td>
+
+  </tr>
+
+
+</table>
+
+<h3>Chapter 7</h3>
+
+<table class="tg">
+  <tr>
+    <th class="pageCell"bgcolor="fbfc9d"><a href="#">148</a></th>
+    <th class="pageCell">149</th>
+    <th class="pageCell">150</th>
+   	<td class="pageCell" bgcolor="fbfc9d"><a href="#">151</a></th>
+    <td class="pageCell">152</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell">153</td>
+    <td class="pageCell">154</td>
+    <td class="pageCell">155</td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">156</a></td>
+    <td class="pageCell">157</td>
+
+  </tr>
+  <tr>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">158</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">159</a></td>
+    <td class="pageCell" bgcolor="fbfc9d"><a href="#">160</a></td>
+
+
+  </tr>
+
+</table>
+<br>
+</div>
+
+</div>
+
+<div class="wrapper">
+
+
+
+<div id="Footerwrapper">
+<div id="footer">
+<p>&#xA9; 2015 <a href="http://www.abbytheia.com">Abby the IA</a> | Powered by <a href="http://www.axilent.com">Axilent</a></p>
+</div>
+</div>
+</div>
+
+
+</html>

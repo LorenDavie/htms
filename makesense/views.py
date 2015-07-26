@@ -36,4 +36,4 @@ def term(request,word_type_slug,term_slug):
     A term.
     """
     term_model = get_object_or_404(Term,term_slug=term_slug,word_type_slug=word_type_slug)
-    return {}
+    return {'term':term_model}

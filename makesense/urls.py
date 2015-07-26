@@ -15,13 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import include, url, patterns
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns('makesense.views',
     url(r'^$','home'),
     url(r'^chapter/(?P<chapter_num>\d+)/(?P<slug>[\w-]+)/$','chapter'),
     url(r'^page/(?P<page_id>\d+)/(?P<slug>[\w-]+)/$','page'),
-    url(r'^term/(?P<word_type_slug>)\w+)/(?P<term_slug>[\w-]+)/$','term'),
+    url(r'^term/(?P<word_type_slug>\w+)/(?P<term_slug>[\w-]+)/$','term'),
 )
+
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # urlpatterns = [
 #     url(r'^admin/', include(admin.site.urls)),
