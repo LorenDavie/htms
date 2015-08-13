@@ -82,9 +82,9 @@ class Chapter(models.Model,ACEContent):
     book = models.ForeignKey(Book,related_name='chapters')
     order = models.IntegerField()
     name = models.CharField(max_length=100)
-    example = models.ForeignKey(Example,unique=True)
-    excercise = models.ForeignKey(Excercise,unique=True)
-    worksheet = models.ForeignKey(WorkSheet,unique=True)
+    example = models.ForeignKey(Example,unique=True,null=True)
+    excercise = models.ForeignKey(Excercise,unique=True,null=True)
+    worksheet = models.ForeignKey(WorkSheet,unique=True,null=True)
     slug = models.SlugField()
     
     def __unicode__(self):
@@ -100,9 +100,9 @@ class Chapter(models.Model,ACEContent):
             'book':'book',
             'order':'order',
             'name':'name',
-            'example':'example',
-            'excercise':'excercise',
-            'worksheet':'worksheet',
+            #'example':'example',
+            #'excercise':'excercise',
+            #'worksheet':'worksheet',
             'slug':'slug',
         }
 
@@ -129,29 +129,6 @@ class Page(models.Model,ACEContent):
             'slug':'slug',
         }
 
-class TermAlternativesConverter(object):
-    """ 
-    Converter for alternatives field of Term model.
-    """
-    field = 'alternatives'
-    deferred = True
-    
-    def to_local_model(self,ace_content,ace_field_value,local_model):
-        """ 
-        Creates TermAlternative objects.
-        """
-        [alt.delete() for alt in local_model.alternatives.all()]
-        
-        for alt_value in ace_field_value:
-            TermAlternative.objects.create(term=local_model,
-                                           alternative_term=alt_value)
-    
-    def to_ace(self,local_model):
-        """ 
-        Gets alternative term values.
-        """
-        return [alt.alternative_term for alt in local_model.alternatives.all()]
-
 class Term(models.Model,ACEContent):
     """ 
     A lexicon term.
@@ -162,9 +139,30 @@ class Term(models.Model,ACEContent):
     word_type_slug = models.SlugField()
     description = models.TextField(blank=True)
     usage = models.ManyToManyField(Page,related_name='terms')
+    related = models.ManyToManyField('self',related_name='related_to')
     
     def __unicode__(self):
         return self.term
+    
+    def get_alternatives(self):
+        """
+        Alternative accessor.
+        """
+        return ['%s|%s' % (alt.alternative_term,alt.word_type) for alt in self.alternatives.all()]
+    
+    def set_alternatives(self,values):
+        """
+        Alternative mutator.
+        """
+        [alt.delete() for alt in self.alternatives.all()]
+        
+        for value in values:
+            term_alt, word_type = value.split('|')
+            TermAlternative.objects.create(term=self,
+                                           alternative_term=term_alt,
+                                           word_type=word_type)
+    
+    alt_prop = property(get_alternatives,set_alternatives)
     
     class Meta:
         unique_together = (('term','word_type'),)
@@ -178,8 +176,8 @@ class Term(models.Model,ACEContent):
             'word_type':'word_type',
             'word_type_slug':'word_type_slug',
             'description':'description',
-            'usage':M2MFieldConverter('usage'),
-            'alternatives':TermAlternativesConverter()
+            #'usage':M2MFieldConverter('usage'),
+            'alternatives':'alt_prop',
         }
         
 
@@ -189,9 +187,8 @@ class TermAlternative(models.Model):
     """
     term = models.ForeignKey(Term,related_name='alternatives')
     alternative_term = models.CharField(max_length=100)
+    word_type = models.CharField(max_length=100)
     
     def __unicode__(self):
         return self.alternative_term
-    
-    class Meta:
-        unique_together = (('term','alternative_term'),)
+

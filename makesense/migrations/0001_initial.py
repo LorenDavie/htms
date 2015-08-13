@@ -73,6 +73,7 @@ class Migration(migrations.Migration):
                 ('word_type', models.CharField(max_length=100)),
                 ('word_type_slug', models.SlugField()),
                 ('description', models.TextField(blank=True)),
+                ('related', models.ManyToManyField(related_name='related_rel_+', to='makesense.Term')),
                 ('usage', models.ManyToManyField(related_name='terms', to='makesense.Page')),
             ],
             options={
@@ -85,6 +86,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('alternative_term', models.CharField(max_length=100)),
+                ('word_type', models.CharField(max_length=100)),
                 ('term', models.ForeignKey(related_name='alternatives', to='makesense.Term')),
             ],
         ),
@@ -101,21 +103,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='chapter',
             name='example',
-            field=models.ForeignKey(to='makesense.Example', unique=True),
+            field=models.ForeignKey(null=True, to='makesense.Example', unique=True),
         ),
         migrations.AddField(
             model_name='chapter',
             name='excercise',
-            field=models.ForeignKey(to='makesense.Excercise', unique=True),
+            field=models.ForeignKey(null=True, to='makesense.Excercise', unique=True),
         ),
         migrations.AddField(
             model_name='chapter',
             name='worksheet',
-            field=models.ForeignKey(to='makesense.WorkSheet', unique=True),
-        ),
-        migrations.AlterUniqueTogether(
-            name='termalternative',
-            unique_together=set([('term', 'alternative_term')]),
+            field=models.ForeignKey(null=True, to='makesense.WorkSheet', unique=True),
         ),
         migrations.AlterUniqueTogether(
             name='term',

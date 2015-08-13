@@ -127,4 +127,6 @@ if DEBUG:
     MEDIA_URL = '/media/'
 
 AXILENT_API_KEY = os.environ.get('AXILENT_API_KEY','')
+AXILENT_LIBRARY_API_KEY = os.environ.get('AXILENT_LIBRARY_API_KEY','')
+
 
