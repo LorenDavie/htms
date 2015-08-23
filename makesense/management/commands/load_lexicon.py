@@ -43,6 +43,7 @@ class Command(BaseCommand):
                     for alt in alts.split(','):
                         if alt:
                             alt_term, alt_term_type_str = alt.rsplit(' ',1)
+                            alt_term = alt_term.strip() # remove whitespace
                             alt_term_type_str = alt_term_type_str[1:-1] # trip parens
                             if not alt_term_type_str.endswith('.'):
                                 alt_term_type_str = alt_term_type_str + '.'
