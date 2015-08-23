@@ -115,9 +115,19 @@ class Page(models.Model,ACEContent):
     body = models.TextField()
     graphic = models.URLField(max_length=400,blank=True, null=True)
     slug = models.SlugField()
+    ordering = models.IntegerField(default=0)
     
     def __unicode__(self):
         return self.title
+    
+    def page_number(self):
+        """ 
+        Gets 1-indexed page number.
+        """
+        return self.order + 1
+    
+    class Meta:
+        ordering = ['ordering']
     
     class ACE:
         content_type = 'Page'

@@ -34,4 +34,4 @@ class Command(BaseCommand):
             
             page.body = ' '.join(new_body_list)
             page.save()
-            page.push_to_library()
+            #page.push_to_library()

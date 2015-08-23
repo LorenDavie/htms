@@ -60,8 +60,12 @@ class Migration(migrations.Migration):
                 ('body', models.TextField()),
                 ('graphic', models.URLField(max_length=400, null=True, blank=True)),
                 ('slug', models.SlugField()),
+                ('ordering', models.IntegerField(default=0)),
                 ('chapter', models.ForeignKey(related_name='pages', to='makesense.Chapter')),
             ],
+            options={
+                'ordering': ['ordering'],
+            },
             bases=(models.Model, djax.content.ACEContent),
         ),
         migrations.CreateModel(
