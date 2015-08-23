@@ -5,7 +5,7 @@ from makesense.utils import template
 from makesense.models import Chapter, Page, Term
 from django.shortcuts import get_object_or_404
 
-book_title = 'How To Make Sense Of Any Mess'
+book_title = 'How To Make Sense of Any Mess'
 
 @template('makesense/home.html')
 def home(request):
@@ -23,11 +23,12 @@ def chapter(request,chapter_num,slug):
     return {'chapter':chapter_model}
 
 @template('makesense/page.html')
-def page(request,page_id,slug):
+def page(request,page_num,slug):
     """ 
     The 'page' page.
     """
-    page_model = get_object_or_404(Page,pk=page_id)
+    ordering = int(page_num) - 1
+    page_model = get_object_or_404(Page,ordering=ordering,slug=slug)
     return {'page':page_model}
 
 @template('makesense/term.html')
