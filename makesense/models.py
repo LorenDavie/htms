@@ -210,7 +210,7 @@ class Term(models.Model,ACEContent):
             'word_type_slug':'word_type_slug',
             'description':'description',
             #'usage':M2MFieldConverter('usage'),
-            'alternatives':'alt_prop',
+            #'alternatives':'alt_prop',
         }
         
 
