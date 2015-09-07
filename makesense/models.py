@@ -124,7 +124,7 @@ class Page(models.Model,ACEContent):
         """ 
         Gets 1-indexed page number.
         """
-        return self.order + 1
+        return self.ordering + 1
     
     class Meta:
         ordering = ['ordering']

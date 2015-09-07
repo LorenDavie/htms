@@ -12,7 +12,8 @@ def home(request):
     """ 
     Home page.
     """
-    return {}
+    chapters = Chapter.objects.all()
+    return {'chapters':chapters}
 
 @template('makesense/lexicon.html')
 def lexicon(request):
