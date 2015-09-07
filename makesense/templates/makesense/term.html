@@ -126,7 +126,11 @@
 
 <h2>{{ term.term }} ({{ term.word_type_slug }}.)</h2>
 <p><b>Definition:</b> {{ term.description }}</p>
-<p><b>Also referenced as:</b> Messy (adj), Messiness (n.), Messes (n.)
+<p><b>Also referenced as:</b> 
+    {% for alt_term in term.alternatives.all %}
+    {{ alt_term.alternative_term }}&nbsp;({{ alt_term.word_type|lower }})
+    {% endfor %}
+</p>
 <p><b>Related to:</b> <a href="#">Related Term</a>, <a href="#">Related Term</a>
 <br>
 

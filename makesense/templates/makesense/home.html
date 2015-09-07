@@ -1,1 +1,348 @@
-HOME
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>How to Make Sense of Any Mess </title>
+	<meta name="description" content="Information Architecture for Everybody. Based on a book by Information Architect, Abby Covert.">
+	<meta name="copyright" content="Copyright (c) 2015 Abby the IA">
+	<meta name="author" content="Abby Covert">
+	<style type="text/css" media="screen">
+	
+/* Basic Text Styles (over-ridded by div specific styles below) */
+
+	p {color: #000000; font-size: 1em;}
+	a:link {color: #000000; font-family: garamond; text-decoration: none;}
+	a:visited {color: #000000;}
+	a:hover {color:#ef1414;}
+	a:active {color: #000000;}
+	ul {list-style-type: none; margin:0;line-height: 1.4em;}
+
+
+	h1 {font-family: helvetica; text-align: left; font-size: 1.5em; line-height:1.5em;}
+	h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	h3 {font-family: garamond; text-align: left; font-size: 1.2em;line-height:1.2em;}
+	h4 {font-family: garamond; text-align: left; font-size: .8em;line-height:1em;}
+	
+/* Positioning div styles and text styling over-rides by div */
+
+.wrapper {overflow:hidden; max-width: 800px; float: center; margin:0 auto;}
+
+#header {padding:5px 5px 5px 5px; background:#ffffff;}
+	#header h1 {font-family: helvetica; text-align: left; font-size: 1em; line-height:.25em;}
+	#header h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header h3 {font-family: garamond; text-align: left; font-size: 2em;line-height:1em;}
+	#header a:link{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:visited{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:hover{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:active{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+
+#nav {width: 800px; min-width: 480px; padding:10px 0px 10px 0px; background:#000000;color: #ffffff;}
+	#nav ul {margin:0; padding:0; list-style:none;}
+	#nav li {display:inline; margin:0; padding:0;}
+	#nav a:link {text-decoration: none; color: #ffffff; font-family: helvetica; padding:15px 15px 15px 15px; font-weight: bold;}
+	#nav a:visited {text-decoration: none; color: #ffffff; font-family: helvetica; padding:15px 15px 15px 15px; font-weight: bold;}
+	#nav a:hover {background: #ffffff; color:#ef1414;}
+	
+#search {float: right; width: 300px; margin: 20px; 120px; 10px; 10px; background:#ffffff;color: #ffffff;}
+	input[type="text"] {width: 180px; padding: 5px;}
+	button {padding:7px; background-color: #000000; border: 1px solid #ffffff; color:#ffffff; text-decoration:none; font-weight: bold;}
+	button:hover {color: ef1414;background-color:e3e2e2;}
+
+#footerWrapper {clear:both; padding-top: 30px;}
+#footer {clear:both; padding:5px 20px; width:800px; background:#000000;}
+    #footer p {color:ffffff; font-family: helvetica; font-size:1 em;}
+    #footer a:link { text-decoration: none; color: #ffffff; font-family: helvetica; }
+    #footer a:visited {color: #ffffff;}
+	#footer a:hover {color:#ef1414;}
+
+/* Template Specific Styles */
+
+#Cover {padding:5px 5px 5px 5px; background:#ffffff;}
+	#Cover h1 {font-family: helvetica; text-align: left; font-size: 4em; line-height:.25em;}
+	#Cover h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
+	#Cover a:link{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
+	#Cover a:visited{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
+	#Cover a:hover{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
+	#Cover a:active{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
+
+#Chapter {background-color: ffffff;float:left; min-width:400px; padding:0px 10px; 0px; 50px;}
+
+#Lessons {border-style: solid; border-width: thin; border-color: #dcdcdc; background: #ffffff; overflow:hidden; width:240px; padding:3px 60px 10px 20px; Float:right;}
+	#Lessons h3{font-size: 1em; font-family: helvetica; color: ef1414;}
+	#Lessons a:link {font-size: 1em; text-decoration: none;}
+	#Lessons ul{list-style-type: none; line-height: 1.5em; padding: 2px;}
+
+/* Responsive Standard Styles */
+
+@media screen and (max-width: 800px) {
+
+	#header {min-width: 320px;}
+	#search {float: none; width: 100%;}
+	
+	#nav {width: 100%; min-width: 480px; padding:10px 0px 10px 0px; background:#000000;color: #ffffff;}
+		#nav ul {margin:0; padding:0; list-style:none;}
+		#nav li {display:block; padding:10px;}
+		#nav a:link {font-size: .9em; line-height: 1em;text-decoration: none; color: #ffffff; font-family: helvetica; padding:10px 10px 10px 10px; font-weight: bold;}
+		#nav a:visited {color: #ffffff;}
+		#nav a:hover {background: #ffffff; color:#ef1414;}
+		#nav a:active {color: #ffffff;}
+	
+	#footer {width: 100%;}
+
+/* Responsive Template Specific Styles */
+	#Cover h1 {margin-left: 10px;font-family: helvetica; text-align: left; font-size: 3em; line-height:.25em;}
+	#Cover h2 {margin-left: 10px;color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#Chapter {float: none; margin-left:7px; width:auto; border:0;}
+	#Chapter h3 {font-size: 1em;}
+	#Lessons {float: none; width:auto;padding:13px;}
+
+}
+
+</style>
+
+</head>
+<div class="wrapper">
+<div id="Cover"><h1>HOW <p>TO <p>MAKE<p> SENSE<p> OF ANY<p> MESS</h1>
+<h2><a href="http://www.abbytheia.com">by Abby Covert</a></h2>
+<br>
+</div>
+
+<div id="nav">
+<ul>
+<li><a href="TOC.html">Table of Contents</a></li>
+<li><a href="/lexicon/">Indexed Lexicon</a></li>
+<li><a href="IAResources.html">IA Resources</a></li>
+<li><a href="http://www.amazon.com/How-Make-Sense-Any-Mess/dp/1500615994/ref=sr_1_1?ie=UTF8&qid=1415130655&sr=8-1&keywords=how+to+make+sense+of+any+mess" target="new">Buy the Book</a></li>
+</ul>
+</div>
+
+<div id="search">
+	<input type="text" name="search"> <button type="button">Search Site</button></li>
+
+</div>
+
+</div>
+
+<div class="wrapper">
+<div id="Chapter">
+<h2><a name="Intro">Front Matter</a></h2>
+<h3><a href="#">Dedication</a></h3>
+<h3><a href="#">Introduction</a></h3>
+<h3><a href="#">About this book</a></h3>
+<h3><a href="#">Acknowledgements</a></h3>
+</div>
+
+<div id="Chapter">
+<h2>Chapter 1: Identify the Mess</h2>
+<h3><a href="Page.html">Messes are made of information and people.</a></h3>
+<h3><a href="#">It&#39;s hard to shine a light on the messes we face.</a></h3>
+<h3><a href="#">Things may change; the messes stay the same.</a></h3>
+<h3><a href="#">People architect information.</a></h3>
+<h3><a href="#">Every <i>thing</i> is complex.</a></h3>
+<h3><a href="#">Knowledge is complex.</a></h3>
+<h3><a href="#">Every <i>thing</i> has information.</a></h3>
+<h3><a href="#">What&#39;s information?</a></h3>
+<h3><a href="#">Information is not data or content.</a></h3>
+<h3><a href="#">Information is architected to serve different needs.</a></h3>
+<h3><a href="#">Users are complex.</a></h3>
+<h3><a href="#">Stakeholders are complex.</a></h3>
+<h3><a href="#">To do is to know.</a></h3>
+<h3><a href="#">Meet Carl.</a></h3>
+<h3><a href="#">It&#39;s your turn.</a></h3>
+</div>
+<div id="Lessons"><h3>Slide Decks & Worksheets</h3>
+<ul>
+<li><a href="#"><b>Worksheet:</b> Draw Your Mess</a></li>
+<li><a href="#"><b>Slide Deck:</b> The world is a mess.</a></li>
+<li><a href="#"><b>Slide Deck:</b> Users & Stakeholders</a></li>
+</ul>
+
+</div>
+<div id="Chapter">
+<h2>Chapter 2: State your Intent</h2>
+<h3><a href="#">Intent is language.</a></h3>
+<h3><a href="#">What is <i>good</i>?</a></h3>
+<h3><a href="#">Good is in the eye of the beholder.</a> </h3>
+<h3><a href="#">Looking good versus being good.</a></h3>
+<h3><a href="#">Meaning can get lost in translation.</a></h3>
+<h3><a href="#">Who matters?</a></h3>
+<h3><a href="#">Start with <i>why</i>.</a></h3>
+<h3><a href="#"><i>What</i> before <i>how</i>.</a></h3>
+<h3><a href="#"><i>How</i> varies widely.</a></h3>
+<h3><a href="#"><i>Why</i>, <i>what</i>, and <i>how</i> are deeply interrelated.</a></h3>
+<h3><a href="#">Language is the material of intent.</a></h3>
+<h3><a href="#">Meet Karen.</a></h3>
+<h3><a href="#">State your intent.</a></h3>
+</div>
+<div id="Lessons">
+<h3>Slide Decks & Worksheets</h3>
+<ul>
+<li><a href="#"><b>Worksheet:</b> Choose Your Words</a></li>
+<li><a href="#"><b>Slide Deck:</b> What is Good?</a></li>
+<li><a href="#"><b>Slide Deck:</b> Why, What & How</a></li>
+
+</ul>
+
+</div>
+<div id="Chapter">
+<h2><a name="Reality">Chapter 3: Face Reality</a></h2>
+<h3><a href="#">By facing reality, we can find solutions.</a></h3>
+<h3><a href="#">Reality involves many players.</a></h3>
+<h3><a href="#">Reality involves many factors.</a></h3>
+<h3><a href="#">Reality happens across channels and contexts.</a></h3>
+<h3><a href="#">Reality has many intersections.</a></h3>
+<h3><a href="#">Reality doesn&#39;t always fit existing patterns.</a></h3>
+<h3><a href="#">Objects let us have deeper conversations about reality.</a></h3>
+<h3><a href="#">Start with scope and scale.</a></h3>
+<h3><a href="#">Timescale matters.</a></h3>
+<h3><a href="#">Reality involves many players.</a></h3>
+<h3><a href="#">Architecture before design.</a></h3>
+<h3><a href="#">Keep it tidy.</a></h3>
+<h3><a href="#">Expand your toolbox.</a></h3>
+<ul>
+<li><a href="#">Block Diagram</a> </li>
+<li><a href="#">Flow Diagram</a></li>
+<li><a href="#">Gantt Chart</a></li>
+<li><a href="#">Quadrant Diagram</a></li>
+<li><a href="#">Venn Diagram</a></li>
+<li><a href="#">Swim Lane Diagram</a></li>
+<li><a href="#">Hierarchy Diagram</a></li>
+<li><a href="#">Mind Map </a></li>
+<li><a href="#">Schematic </a></li>
+<li><a href="#">Journey Map</a></li>
+</ul>
+<h3><a href="#">Try diagramming.</a></h3>
+<h3><a href="#">Meet Maggie.</a></h3>
+<h3><a href="#">Face your reality.</a></h3>
+</div>
+<div id="Lessons">
+<h3>Slide Decks & Worksheets</h3>
+<ul>
+<li><a href="#"><b>Worksheet:</b> Diagram Your Reality</a></li>
+<li><a href="#"><b>Worksheet:</b> Diagram Critique Bingo</a></li>
+<li><a href="#"><b>Slide Deck:</b> Channels & Contexts</a></li>
+<li><a href="#"><b>Slide Deck:</b> Diagramming reality</a></li>
+</ul>
+</div>
+
+
+<div id="Chapter">
+<h2><a name="Direction">Chapter 4: Choose a Direction</a></h2>
+<h3><a href="#">Moving from <i>why</i> to <i>what</i>.</a></h3>
+<h3><a href="#">We work at different levels.</a></h3>
+<h3><a href="#">What <i>are</i> you making?</a></h3>
+<h3><a href="#">These levels deeply affect one another.</a></h3>
+<h3><a href="#">We make places.</a></h3>
+<h3><a href="#">There are spaces between the places we make.</a></h3>
+<h3><a href="#">Language matters.</a></h3>
+<h3><a href="#">Reduce linguistic insecurity.</h3>
+<h3><a href="#">Understand ontology.</a></h3>
+<h3><a href="#">Design <i>with</i>, not for.</a></h3>
+<h3><a href="#">Create a list of words you say.</a></h3>
+<h3><a href="#">Create a list of words you don&#39;t say.</a></h3>
+<h3><a href="#">Words I don&#39;t say in this eBook.</a></h3>
+<h3><a href="#">Define terms for outsiders.</a></h3>
+<h3><a href="#">Understand the past.</a></h3>
+<h3><a href="#">Think about nouns and verbs.</a></h3>
+<h3><a href="#">Think about relationships between nouns and verbs.</a></h3>
+<h3><a href="#">Watch out for options and opinions.</a></h3>
+<h3><a href="#">Opinions are like&#133;</a></h3>
+<h3><a href="#">Admit where you are.</a></h3>
+<h3><a href="#">Meet Rasheed.</a></h3>
+<h3><a href="#">Control your vocabulary.</a></h3>
+</div>
+
+<div id="Lessons">
+<h3>Slide Decks & Worksheets</h3>
+<ul>
+<li><a href="#"><b>Worksheet:</b> Choose a Direction</a></li>
+<li><a href="#"><b>Slide Deck:</b> The role of language</a></li>
+<li><a href="#"><b>Slide Deck:</b> Controlled vocabularies</a></li>
+</ul>
+</div>
+
+<div id="Chapter">
+<h2><a name="Distance">Chapter 5: Measure the Distance</a> </h2>
+<h3><a href="#">There&#39;s distance between reality and your intent.</a></h3>
+<h3><a href="#">Goals are our lens on the world.</a></h3>
+<h3><a href="#">Progress is as important to measure as success.</a></h3>
+<h3><a href="#">Most things can be measured by systems or people.</a></h3>
+<h3><a href="#">Common indicators.</a></h3>
+<h3><a href="#">Use worksheets to mine data from people.</a></h3>
+<h3><a href="#">Baselines help us stay in touch with reality.</a></h3>
+<h3><a href="#">Flags tell us if we&#39;re headed in the right direction.</a></h3>
+<h3><a href="#">Measurements have rhythm.</a></h3>
+<h3><a href="#">Fuzzy is normal.</a></h3>
+<h3><a href="#">Meet Jim.</a></h3>
+<h3><a href="#">Set your goals.</a></h3>
+</div>
+
+<div id="Lessons">
+<h3>Slide Decks & Worksheets</h3>
+<ul>
+<li><a href="#"><b>Worksheet:</b> Measure the Distance</a></li>
+<li><a href="#"><b>Slide Deck:</b> Quantifying intent</a></li>
+</ul>
+</div>
+
+<div id="Chapter">
+<h2><a name="Structure">Chapter 6: Play with Structure</a></h2>
+<h3><a href="#">There are many ways to structure things.</a></h3>
+<h3><a href="#">Taxonomy is how we arrange things.</a></h3>
+<h3><a href="#">We combine taxonomies to create unique forms.</a></h3>
+<h3><a href="#">Sorting is easier than deciding how to sort.</a></h3>
+<h3><a href="#">Classification can be exact or ambiguous.</a></h3>
+<h3><a href="#">Ambiguity costs clarity; exactitude costs flexibility.</a></h3>
+<h3><a href="#">Ambiguity hides in simplicity.</a></h3>
+<h3><a href="#">Facets are the lenses we use to classify.</a></h3>
+<h3><a href="#">Identify facts.</a></h3>
+<h3><a href="#">Humans are complex.</a></h3>
+<h3><a href="#">The way you organize things says a lot about you.</a></h3>
+<h3><a href="#">Taxonomies can be hierarchical or heterarchical.</a></h3>
+<h3><a href="#">Taxonomies can be sequential.</a></h3>
+<h3><a href="#">Hypertexts bridge taxonomies.</a></h3>
+<h3><a href="#">Most things need a mix of taxonomic approaches.</a></h3>
+<h3><a href="#">Meet Joan</a> </h3>
+<h3><a href="#">Play with Structure</a></h3>
+</div>
+
+<div id="Lessons">
+<h3>Slide Decks & Worksheets</h3>
+<ul>
+<li><a href="#"><b>Worksheet:</b> Learn these Patterns</a></li>
+<li><a href="#"><b>Slide Deck:</b> Playtesting structures</a></li>
+</ul>
+</div>
+
+<div id="Chapter">
+<h2><a name="Adjust">Chapter 7: Prepare to Adjust</a></h2>
+<h3><a href="#">Adjustments are a part of reality.</a></h3>
+<h3><a href="#">The sum is greater than its parts.</a></h3>
+<h3><a href="#">It&#39;s easy to reach agreement alone.</a></h3>
+<h3><a href="#"><strike>Argue about</strike> discuss it until it&#39;s clear.</a></h3>
+<h3><a href="#">If it isn&#39;t under the floorboards, it&#39;s a fa&#231;ade.</a></h3>
+<h3><a href="#">We serve many masters.</a></h3>
+<h3><a href="#">Make room for information architecture.</a></h3>
+<h3><a href="#">&#34;Hey, nice IA!&#34; &mdash; said no one, ever.</a></h3>
+<h3><a href="#">Be the filter, not the grounds.</a></h3>
+<h3><a href="#">This is hard.</a></h3>
+<h3><a href="#">It&#39;s far more <i>rewarding</i> than hard.</a></h3>
+<h3><a name="Abby">Meet Abby.</a></h3>
+<h3><a href="#">Make sense yet?</a></h3>
+</div>
+
+<div id="Lessons">
+<h3>Slide Decks & Worksheets</h3>
+<ul>
+<li><a href="#"><b>Worksheet:</b> How to discuss IA</a></li>
+<li><a href="#"><b>Slide Deck:</b> IA, therefore I am</a></li>
+</ul>
+</div>
+<div id="Footerwrapper">
+<div id="footer">
+<p>&#xA9; 2015 <a href="http://www.abbytheia.com">Abby the IA</a> | Powered by <a href="http://www.axilent.com">Axilent</a></p>
+</div>
+</div>
+</div>
+
+
+</html>

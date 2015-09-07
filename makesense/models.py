@@ -137,7 +137,28 @@ class Page(models.Model,ACEContent):
             'body':'body',
             'graphic':'graphic',
             'slug':'slug',
+            'ordering':'ordering',
         }
+
+class TermManager(models.Manager):
+    """
+    Manager class for term.
+    """
+    def get_alpha_groups(self,queryset=None):
+        """
+        Groups by alphabet.
+        """
+        if not queryset:
+            queryset = self.all()
+        
+        blocks = []
+        
+        for letter in 'abcdefghijklmnopqrstuvwxyz':
+            block = {'key':letter}
+            block['terms'] = queryset.filter(term__istartswith=letter)
+            blocks.append(block)
+        
+        return blocks
 
 class Term(models.Model,ACEContent):
     """ 
@@ -150,6 +171,8 @@ class Term(models.Model,ACEContent):
     description = models.TextField(blank=True)
     usage = models.ManyToManyField(Page,related_name='terms')
     related = models.ManyToManyField('self',related_name='related_to')
+    
+    objects = TermManager()
     
     def __unicode__(self):
         return self.term

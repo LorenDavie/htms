@@ -14,6 +14,13 @@ def home(request):
     """
     return {}
 
+@template('makesense/lexicon.html')
+def lexicon(request):
+    """
+    Lexicon.
+    """
+    return {'groups':Term.objects.get_alpha_groups()}
+
 @template('makesense/chapter.html')
 def chapter(request,chapter_num,slug):
     """ 

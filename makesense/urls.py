@@ -21,6 +21,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns('makesense.views',
     url(r'^$','home'),
+    url(r'^lexicon/$','lexicon'),
     url(r'^chapter/(?P<chapter_num>\d+)/(?P<slug>[\w-]+)/$','chapter'),
     url(r'^page/(?P<page_num>\d+)/(?P<slug>[\w-]+)/$','page'),
     url(r'^term/(?P<word_type_slug>\w+)/(?P<term_slug>[\w-]+)/$','term'),
