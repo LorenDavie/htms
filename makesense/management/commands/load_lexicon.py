@@ -53,6 +53,6 @@ class Command(BaseCommand):
                                                            alternative_term=alt_term,
                                                            word_type=word_type_map[alt_term_type_str])
                     
-                    #term.push_to_library() # send to ACE
+                    term.push_to_library() # send to ACE
                 
                 print '\t'.join(row)

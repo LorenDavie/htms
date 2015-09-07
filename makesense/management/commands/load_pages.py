@@ -21,7 +21,7 @@ class Command(BaseCommand):
         book, book_created = Book.objects.get_or_create(title='How To Make Sense of Any Mess',dedication='')
         
         if book_created:
-            #book.push_to_library()
+            book.push_to_library()
             print 'pushed book into ACE library'
         
         with open(filename,'rb') as html_file:
@@ -36,7 +36,7 @@ class Command(BaseCommand):
                                                  order=chapter_count,
                                                  name=chapter_title_name.strip(),
                                                  slug=slugify(chapter_title_name))
-                #chapter.push_to_library()
+                chapter.push_to_library()
                 self.build_chapter(chapter,chapter_title)
                 chapter_count += 1
     
