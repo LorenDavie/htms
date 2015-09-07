@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -76,14 +78,19 @@ WSGI_APPLICATION = 'makesense.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME','makesense'),
-        'USER': os.environ.get('DB_USER',''),
-        'PASSWORD': os.environ.get('DB_PASSWORD',''),
+DATABASES = {}
+
+if os.environ.get('MS_RUNLOCAL',None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ.get('DB_NAME','makesense'),
+            'USER': os.environ.get('DB_USER',''),
+            'PASSWORD': os.environ.get('DB_PASSWORD',''),
+        }
     }
-}
+else:
+    DATABASES['default'] = dj_database_url.config()
 
 
 # Internationalization
