@@ -119,20 +119,21 @@
     {{ alt_term.alternative_term }}&nbsp;({{ alt_term.word_type|lower }})
     {% endfor %}
 </p>
-<p><b>Related to:</b> <a href="#">Related Term</a>, <a href="#">Related Term</a>
+<p><b>Related to:</b> <a href="#">Related Term</a>, <a href="#">Related Term</a></p>
 <br>
 
 </div>
 <div id="Results">
 <hr>
 <p><b>The word <b>{{ term.term|lower }}</b> was used {{ term.total_usage }} times across {{ term.usage.count }} pages</b></p>
-{# {% for page in term.usage.all %} #}
-{# <hr> #}
-{# <p><a href="#">Chapter {{ page.chapter.pk }}: {{ page.chapter }} | Page {{ page.pk }} </a></p> #}
-{# {{ page.body|safe }} #}
-{# <br> #}
-{# <hr> #}
-{# {% endfor %} #}
+{% for page in term.usage.all %}
+<div>
+<hr>
+<p><a href="/chapter/{{ page.chapter.order }}/{{ page.chapter.slug }}/">Chapter {{ page.chapter.pk }}: {{ page.chapter }} | Page {{ page.page_number }} </a></p>
+{{ page.body|safe|truncatewords_html:10 }}
+<br>
+</div>
+{% endfor %}
 </div>
 <div id="Sidebar">
 {% for chapter in term.usage_chapters %}
