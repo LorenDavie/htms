@@ -46,3 +46,12 @@ def term(request,word_type_slug,term_slug):
     """
     term_model = get_object_or_404(Term,term_slug=term_slug,word_type_slug=word_type_slug)
     return {'term':term_model}
+
+@template('makesense/search.html')
+def search(request):
+    """
+    Searches the site.;
+    """
+    query = request.GET.get('q',None)
+    results = Page.objects.search(query)
+    return {'results':results,'query':query}

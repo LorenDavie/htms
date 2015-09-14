@@ -1,0 +1,154 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>How to Make Sense of Any Mess </title>
+	<meta name="description" content="Information Architecture for Everybody. Based on a book by Information Architect, Abby Covert.">
+	<meta name="copyright" content="Copyright (c) 2015 Abby the IA">
+	<meta name="author" content="Abby Covert">
+	<style type="text/css" media="screen">
+	
+/* Basic Text Styles (over-ridded by div specific styles below) */
+
+	p {color: #000000; font-size: 1em;}
+	a:link {color: #000000; font-family: garamond; text-decoration: none;}
+	a:visited {color: #000000;}
+	a:hover {color:#ef1414;}
+	a:active {color: #000000;}
+	ul {list-style-type: none; margin:0;line-height: 1.4em;}
+
+
+	h1 {font-family: helvetica; text-align: left; font-size: 1.5em; line-height:1.5em;}
+	h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	h3 {font-family: garamond; text-align: left; font-size: 1.2em;line-height:1.2em;}
+	h4 {font-family: garamond; text-align: left; font-size: .8em;line-height:1em;}
+	
+/* Positioning div styles and text styling over-rides by div */
+
+.wrapper {overflow:hidden; max-width: 800px; float: center; margin:0 auto;}
+
+#header {padding:5px 5px 5px 5px; background:#ffffff;}
+	#header h1 {font-family: helvetica; text-align: left; font-size: 1em; line-height:.25em;}
+	#header h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header h3 {font-family: garamond; text-align: left; font-size: 2em;line-height:1em;}
+	#header a:link{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:visited{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:hover{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:active{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+
+#nav {width: 800px; min-width: 480px; padding:10px 0px 10px 0px; background:#000000;color: #ffffff;}
+	#nav ul {margin:0; padding:0; list-style:none;}
+	#nav li {display:inline; margin:0; padding:0;}
+	#nav a:link {text-decoration: none; color: #ffffff; font-family: helvetica; padding:15px 15px 15px 15px; font-weight: bold;}
+	#nav a:visited {text-decoration: none; color: #ffffff; font-family: helvetica; padding:15px 15px 15px 15px; font-weight: bold;}
+	#nav a:hover {background: #ffffff; color:#ef1414;}
+	
+#search {float: right; width: 300px; margin: 20px; 120px; 10px; 10px; background:#ffffff;color: #ffffff;}
+	input[type="text"] {width: 180px; padding: 5px;}
+	button {padding:7px; background-color: #000000; border: 1px solid #ffffff; color:#ffffff; text-decoration:none; font-weight: bold;}
+	#search button:hover {color: ef1414;background-color:e3e2e2;}
+
+#footerWrapper {clear:both; padding-top: 30px;}
+#footer {clear:both; padding:5px 20px; width:800px; background:#000000;}
+    #footer p {color:ffffff; font-family: helvetica; font-size:1 em;}
+    #footer a:link { text-decoration: none; color: #ffffff; font-family: helvetica; }
+    #footer a:visited {color: #ffffff;}
+	#footer a:hover {color:#ef1414;}
+
+/* Template Specific Styles */
+
+.highlight {background-color:#fbfc9d;}
+
+#Results {background-color: ffffff;float:left; margin-right:20px; min-width:400px; padding:10px 10px;}
+	#Results p {font: garamond; max-width: 400px; min-width: 320px; }
+	#Results ul {list-style-type: circle; max-width: 320px; line-height: 1.25em;}
+	#Results h2{max-width: 350px; color: #000000; font-family: garamond; text-align: left; font-size: 2em; line-height:1em;}
+	#Results a{font-weight: bold; text-decoration: underline; padding: 1px;}
+
+#Sidebar {border-style: solid; border-width: thin; border-color: #dcdcdc; background: #ffffff; overflow:hidden; width:240px; padding:10px 60px 10px 20px; Float:right;}
+	#Sidebar h3{font-size: 1em; font-family: Garamond; color: 000000;}
+	#sidebar a:link { color: #000000; font-size: 1em; padding:5px; font-weight: bold;}
+	#sidebar a:hover {color: #ef1414; padding:5px; font-weight: bold;}
+	#sidebar ul{line-height: 1.5em;}
+	#SideBar .tg  {text-align: center; width:220px;border-collapse:collapse;border-spacing:0;}
+	#Sidebar .tg td{padding: 5px; color: #848484; font-family:garamond, serif;font-size:1em;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+	#Sidebar .tg th{padding: 5px; color: #848484; font-family:garamond, serif;font-size:1em;font-weight:normal;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+
+/* Responsive Standard Styles */
+
+@media screen and (max-width: 800px) {
+
+	#header {min-width: 320px;}
+	#search {float: none; width: 100%;}
+	
+	#nav {width: 100%; min-width: 480px; padding:10px 0px 10px 0px; background:#000000;color: #ffffff;}
+		#nav ul {margin:0; padding:0; list-style:none;}
+		#nav li {display:block; padding:10px;}
+		#nav a:link {font-size: .9em; line-height: 1em;text-decoration: none; color: #ffffff; font-family: helvetica; padding:10px 10px 10px 10px; font-weight: bold;}
+		#nav a:visited {color: #ffffff;}
+		#nav a:hover {background: #ffffff; color:#ef1414;}
+		#nav a:active {color: #ffffff;}
+	
+	#footer {width: 100%;}
+
+/* Responsive Template Specific Styles */
+
+	#Results {float: none; margin-right:0; width:auto; border:0;}
+		#Results p {max-width: 320px; min-width: 100px;}
+		#Results h2 {max-width: 320px; min-width: 100px;}
+	
+	#Sidebar {display: none; float: none;}
+
+}
+
+</style>
+
+</head>
+<div class="wrapper">
+<div id="header"><h1>How to Make Sense of Any Mess <a href="http://www.abbytheia.com">by Abby Covert<a></h1>
+</div>
+
+{% include 'makesense/includes/nav.html' %}
+
+<div id="Results">
+
+
+<h2>Results for: {{ query }}</h2>
+
+</div>
+<div id="Results">
+<hr>
+<p><b>{{ query }}</b> was found {{ results.count }} time{{ results.count|pluralize }} </b></p>
+<hr>
+{% for page in results %}
+<p><a href="/page/{{ page.page_number }}/{{ page.slug }}/">Chapter {{ page.chapter.order }}: {{ page.chapter }} | Page {{ page.page_number }} {{ page }} </a></p>
+
+{{ page.body|safe|truncatewords_html:10 }}
+<hr>
+{% endfor %}
+{# <p><a href="#">Slide Deck: Name </a></p> #}
+{# <p>A <span class="highlight">search term</span> is important because blah blah blah</p> #}
+{# <hr> #}
+{# <p><a href="#">Worksheet: Name </a></p> #}
+{# <p>A <span class="highlight">search term</span> is important because blah blah blah</p> #}
+{# <hr> #}
+
+
+</div>
+
+</div>
+
+</div>
+
+<div class="wrapper">
+
+
+
+<div id="Footerwrapper">
+<div id="footer">
+<p>&#xA9; 2015 <a href="http://www.abbytheia.com">Abby the IA</a> | Powered by <a href="http://www.axilent.com">Axilent</a></p>
+</div>
+</div>
+</div>
+
+
+</html>

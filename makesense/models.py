@@ -117,6 +117,8 @@ class Page(models.Model,ACEContent):
     slug = models.SlugField()
     ordering = models.IntegerField(default=0)
     
+    objects = ContentManager()
+    
     def __unicode__(self):
         return self.title
     
