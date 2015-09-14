@@ -127,7 +127,9 @@
                {{ page.body|safe }}
             </div>
             {% if page.graphic %}
+            {% ifnotequal page.graphic 'None' %}
             <img src="{{ STATIC_URL }}{{ page.graphic }}" alt="The politics of making sense involves moving through a messy human network">
+            {% endifnotequal %}
             {% endif %}
             <div id="Controls">
                 <hr>
