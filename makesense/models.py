@@ -126,6 +126,12 @@ class Page(models.Model,ACEContent):
         """
         return self.ordering + 1
     
+    def term_usage(self,term):
+        """
+        Counts incident of term usage in this page.
+        """
+        return self.body.count(term)
+    
     class Meta:
         ordering = ['ordering']
     
@@ -171,6 +177,7 @@ class Term(models.Model,ACEContent):
     description = models.TextField(blank=True)
     usage = models.ManyToManyField(Page,related_name='terms')
     related = models.ManyToManyField('self',related_name='related_to')
+    total_usage = models.IntegerField(default=0)
     
     objects = TermManager()
     
@@ -196,6 +203,30 @@ class Term(models.Model,ACEContent):
                                            word_type=word_type)
     
     alt_prop = property(get_alternatives,set_alternatives)
+    
+    def usage_chapters(self):
+        """
+        Gets pages that use the term, organized into chapters.
+        """
+        chapter_list = []
+        for chapter in Chapter.objects.all():
+            chapter_rows = []
+            column_index = 0
+            current_row = []
+            for page in chapter.pages.all():
+                usage = self.usage.filter(pk=page.pk).exists()
+                current_row.append({'page':page,'usage':usage})
+                if column_index == 4:
+                    # this is the end of the row
+                    chapter_rows.append(current_row)
+                    current_row = []
+                    column_index = 0
+                else:
+                    column_index += 1
+            
+            chapter_list.append({'chapter':chapter,'chapter_rows':chapter_rows})
+        
+        return chapter_list
     
     class Meta:
         unique_together = (('term','word_type'),)
