@@ -1,1 +1,146 @@
-CHAPTER
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>How to Make Sense of Any Mess </title>
+	<meta name="description" content="Information Architecture for Everybody. Based on a book by Information Architect, Abby Covert.">
+	<meta name="copyright" content="Copyright (c) 2015 Abby the IA">
+	<meta name="author" content="Abby Covert">
+	<style type="text/css" media="screen">
+	
+/* Basic Text Styles (over-ridded by div specific styles below) */
+
+	p {color: #000000; font-size: 1em;}
+	a:link {color: #000000; font-family: garamond; text-decoration: none;}
+	a:visited {color: #000000;}
+	a:hover {color:#ef1414;}
+	a:active {color: #000000;}
+	ul {list-style-type: none; margin:0;line-height: 1.4em;}
+
+
+	h1 {font-family: helvetica; text-align: left; font-size: 1.5em; line-height:1.5em;}
+	h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	h3 {font-family: garamond; text-align: left; font-size: 1.2em;line-height:1.2em;}
+	h4 {font-family: garamond; text-align: left; font-size: .8em;line-height:1em;}
+	
+/* Positioning div styles and text styling over-rides by div */
+
+.wrapper {overflow:hidden; max-width: 800px; float: center; margin:0 auto;}
+
+#header {padding:5px 5px 5px 5px; background:#ffffff;}
+	#header h1 {font-family: helvetica; text-align: left; font-size: 1em; line-height:.25em;}
+	#header h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header h3 {font-family: garamond; text-align: left; font-size: 2em;line-height:1em;}
+	#header a:link{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:visited{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:hover{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+	#header a:active{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
+
+#nav {width: 800px; min-width: 480px; padding:10px 0px 10px 0px; background:#000000;color: #ffffff;}
+	#nav ul {margin:0; padding:0; list-style:none;}
+	#nav li {display:inline; margin:0; padding:0;}
+	#nav a:link {text-decoration: none; color: #ffffff; font-family: helvetica; padding:15px 15px 15px 15px; font-weight: bold;}
+	#nav a:visited {text-decoration: none; color: #ffffff; font-family: helvetica; padding:15px 15px 15px 15px; font-weight: bold;}
+	#nav a:hover {background: #ffffff; color:#ef1414;}
+	
+#search {float: right; width: 300px; margin: 20px; 120px; 10px; 10px; background:#ffffff;color: #ffffff;}
+	input[type="text"] {width: 180px; padding: 5px;}
+	input[type="submit"] {padding:7px; background-color: #000000; border: 1px solid #ffffff; color:#ffffff; text-decoration:none; font-weight: bold;}
+	#search input[type="submit"]:hover {color: ef1414;background-color:e3e2e2;}
+
+#footerWrapper {clear:both; padding-top: 30px;}
+#footer {clear:both; padding:5px 20px; width:800px; background:#000000;}
+    #footer p {color:#ffffff; font-family: helvetica; font-size:1 em;}
+    #footer a:link { text-decoration: none; color: #ffffff; font-family: helvetica; }
+    #footer a:visited {color: #ffffff;}
+	#footer a:hover {color:#ef1414;}
+
+/* Template Specific Styles */
+
+#Page {background-color: ffffff; min-width:400px; padding:20px;}
+	#Page p {max-width: 400px; min-width: 320px; font-size: 1.2em; line-height: 1.4em;}
+	#Page ul {max-width: 400px; list-style-type: circle; font-size: 1.2em; line-height: 1.4em;}
+	#Page h2{max-width: 400px; color: #000000; font-family: garamond; text-align: left; font-size: 2em; line-height:1em;}
+	#Page h3{max-width: 400px; color: #C0C0C0; font-family: helvetica; text-align: left; font-size: 2em; line-height:1em;}
+	#Page h4{max-width: 400px; color: #000000; font-family: helvetica; text-align: left; font-size: 5em; line-height:1.2em;}
+	#Page h5{max-width: 400px; color: #ef1414; font-family: helvetica; text-align: left; font-size: 2em; line-height:.25em;}
+	#Page a{background-color:#fbfc9d; text-decoration: none; padding: 1px;}
+	img {max-width: 450px; min-width: 320px; padding-bottom: 40px; padding-top: 50px; padding-left: 50px; float: center;}
+
+	
+#Controls {text-align: center; width: 100%; min-width: 320px;  background:#ffffff;color: #000000;}
+	#Controls ul {margin:0; padding:0; list-style:none;}
+	#Controls li {text-align: center; display:inline; margin:0; padding:0;}
+	#Controls a:link {text-decoration: none; color: #000000; font-family: garamond; padding:10px 10px 10px 10px;}
+	#Controls a:visited {color: #000000;}
+	#Controls a:hover {background: #ffffff; color:#ef1414;}
+	#Controls a:active {color: #000000;}
+		
+	#Controls button {padding:10px; background-color: #000000; border: 1px solid #ffffff; color:#ffffff; text-decoration:none; font-weight: bold;}
+	#Controls button:hover {color: ef1414; background-color:e3e2e2;}
+	
+/* Responsive Standard Styles */
+
+@media screen and (max-width: 800px) {
+
+	#header {min-width: 320px;}
+	#search {float: none; width: 100%;}
+	
+	#nav {width: 100%; min-width: 480px; padding:10px 0px 10px 0px; background:#000000;color: #ffffff;}
+		#nav ul {margin:0; padding:0; list-style:none;}
+		#nav li {display:block; padding:10px;}
+		#nav a:link {font-size: .9em; line-height: 1em;text-decoration: none; color: #ffffff; font-family: helvetica; padding:10px 10px 10px 10px; font-weight: bold;}
+		#nav a:visited {color: #ffffff;}
+		#nav a:hover {background: #ffffff; color:#ef1414;}
+		#nav a:active {color: #ffffff;}
+	
+	#footer {width: 100%;}
+
+/* Responsive Template Specific Styles */
+
+	#Page {margin: 0; width:auto; border:0;}
+		#Page p {font-size: 1em; line-height: 1.2em; max-width: 320px; min-width: 100px;}
+		#Page h2 {max-width: 320px; min-width: 100px; font-size: 1.5em; line-height: 1.2em; }
+		#Page ul {font-size: 1em; line-height: 1.2em; max-width: 320px; min-width: 100px;}
+
+	img {max-width: 320px; min-width: 150px;}
+
+}
+
+</style>
+
+</head>
+<div class="wrapper">
+<div id="header"><h1>How to Make Sense of Any Mess <a href="http://www.abbytheia.com">by Abby Covert<a></h1>
+</div>
+
+{% include 'makesense/includes/nav.html' %}
+
+</div>
+
+<div class="wrapper">
+	<div id="Page">
+		<h5>Chapter {{ chapter.order }}</h5>
+		<h4>{{ chapter.name }}</h4>
+</div>
+<div id="Controls">
+<hr>
+<br>
+<Table>
+<tr><a href="TOC.html">< Previous Page</a></tr>
+<tr><button>Share Page 11 of 160</button></tr>
+<tr><a href="#">Next Page ></a></tr>
+</table>
+</div>
+
+
+
+
+<div id="Footerwrapper">
+<div id="footer">
+<p>&#xA9; 2015 <a href="http://www.abbytheia.com">Abby the IA</a> | Powered by <a href="http://www.axilent.com">Axilent</a></p>
+</div>
+</div>
+</div>
+
+
+</html>

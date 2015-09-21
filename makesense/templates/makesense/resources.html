@@ -56,22 +56,14 @@
 
 /* Template Specific Styles */
 
-.highlight {background-color:#fbfc9d;}
-
-#Results {background-color: ffffff;float:left; margin-right:20px; min-width:400px; padding:10px 10px;}
-	#Results p {font: garamond; max-width: 400px; min-width: 320px; }
-	#Results ul {list-style-type: circle; max-width: 320px; line-height: 1.25em;}
-	#Results h2{max-width: 350px; color: #000000; font-family: garamond; text-align: left; font-size: 2em; line-height:1em;}
-	#Results a{font-weight: bold; text-decoration: underline; padding: 1px;}
-
-#Sidebar {border-style: solid; border-width: thin; border-color: #dcdcdc; background: #ffffff; overflow:hidden; width:240px; padding:10px 60px 10px 20px; Float:right;}
-	#Sidebar h3{font-size: 1em; font-family: Garamond; color: 000000;}
-	#sidebar a:link { color: #000000; font-size: 1em; padding:5px; font-weight: bold;}
-	#sidebar a:hover {color: #ef1414; padding:5px; font-weight: bold;}
-	#sidebar ul{line-height: 1.5em;}
-	#SideBar .tg  {text-align: center; width:220px;border-collapse:collapse;border-spacing:0;}
-	#Sidebar .tg td{padding: 5px; color: #848484; font-family:garamond, serif;font-size:1em;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-	#Sidebar .tg th{padding: 5px; color: #848484; font-family:garamond, serif;font-size:1em;font-weight:normal;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+#Resources {background-color: ffffff;float:left; margin-right:20px; max-width:400px; padding: 10px;}
+	#Resources ul { max-width: 320px;padding: 5px; line-height: 1.4em;}
+	#Resources li { padding 10px;}
+#Intro {border-style: solid; border-width: thin; border-color: #dcdcdc; background: #ffffff; overflow:hidden; width:240px; padding:3px 60px 10px 20px; Float:right;}
+	#Intro h3{font-family: helvetica; color: ef1414;}
+	#Intro a:link {font-size: 1.2em; line-height: 1.4em; text-decoration: none;}
+	#Intro li{line-height: 1.5em;}
+	#Intro h3{font-size: 2em;}
 
 /* Responsive Standard Styles */
 
@@ -92,11 +84,7 @@
 
 /* Responsive Template Specific Styles */
 
-	#Results {float: none; margin-right:0; width:auto; border:0;}
-		#Results p {max-width: 320px; min-width: 100px;}
-		#Results h2 {max-width: 320px; min-width: 100px;}
-	
-	#Sidebar {display: none; float: none;}
+	#Intro {float: none; width:320px; padding:13px;}
 
 }
 
@@ -109,38 +97,70 @@
 
 {% include 'makesense/includes/nav.html' %}
 
-<div id="Results">
-
-
-<h2>Results for: {{ query }}</h2>
-
-</div>
-<div id="Results">
-<hr>
-<p><b>{{ query }}</b> was found {{ results.count }} time{{ results.count|pluralize }} </b></p>
-<hr>
-{% for page in results %}
-<p><a href="/page/{{ page.page_number }}/{{ page.slug }}/">Chapter {{ page.chapter.order }}: {{ page.chapter }} | Page {{ page.page_number }} {{ page }} </a></p>
-
-{{ page.body|safe }}
-<hr>
-{% endfor %}
-{# <p><a href="#">Slide Deck: Name </a></p> #}
-{# <p>A <span class="highlight">search term</span> is important because blah blah blah</p> #}
-{# <hr> #}
-{# <p><a href="#">Worksheet: Name </a></p> #}
-{# <p>A <span class="highlight">search term</span> is important because blah blah blah</p> #}
-{# <hr> #}
-
-
-</div>
-
-</div>
-
 </div>
 
 <div class="wrapper">
 
+<br>
+<div id="Intro">
+<h1>IA Resources</h1>
+<p>These books, websites and articles were selected to help even the most junior sensemaker to make sense of the wide world of information architecture.</p> 
+<p>If you feel like there is an important resource that should be listed here, please contact me via email</p>
+
+</div>
+<div id="Resources">
+
+<h3>Books</h3>
+<ul>
+<li><a href="#">Robert Gushko, <i>The Discipline of Organization</i></a></li>
+<li><a href="#">Heather Hedden, <i>The Accidental Taxonomist</i></a></li>
+<li><a href="#">Andrew Hinton, <i>Understanding Context</i></a></li>
+<li><a href="#">Kevin Lynch, <i>An Image of the City</i></a></li>
+<li><a href="#">Peter Morville, <i>Interwingled</i></a></li>
+<li><a href="#">Andrea Resmini, <i>Reframing IA</i></a></li>
+<li><a href="#">Nathan Shedroff, <i>Design is the Problem</i></a></li>
+<li><a href="#">Donna Spencer, <i>Card Sorting</i></a></li>
+<li><a href="#">Edward Tufte, <i>Visual Explanations</i></a></li>
+<li><a href="#">Richard Saul Wurman, <i>Information Anxiety II</i></a></li>
+<li><a href="#">Indi Young, <i>Mental Models</i></a></li>
+</ul>
+<br>
+
+<br>
+<h3>Websites</h3>
+<ul>
+<li><a href="http://www.boxesandarrows.com">BoxesAndArrows.com </a></li>
+<li><a href="http://www.IAInstitute.org">IAInstitute.org</a></li>
+<li><a href="http://www.iA.net/blog">iA.net/blog</a></li>
+<li><a href="http://www.Semanticstudios.com">Semanticstudios.com</a></li>
+<li><a href="http://www.Understandinggroup.com">Understandinggroup.com</a></li>
+</ul>
+<br>
+<br>
+<h3>Articles by Abby Covert</h3>
+<ul>
+<li><a href="#">Insert Article name from Abby the IA Blog</a></li>
+<li><a href="#">Insert Article name from Abby the IA Blog</a></li>
+<li><a href="#">Insert Article name from Abby the IA Blog</a></li>
+<li><a href="#">Insert Article name from Abby the IA Blog</a></li>
+<li><a href="#">Insert Article name from Abby the IA Blog</a></li>
+<li><a href="#">Insert Article name from Abby the IA Blog</a></li>
+</ul>
+<br>
+<h3>Articles by Other Authors</h3>
+<ul>
+<li><a href="http://www.wsj.com/articles/SB10001424052748703467304575383131592767868">Lost in Translation: How language profoundly influences the way people see the world</a></li>
+<li><a href="http://www.theatlantic.com/technology/archive/2014/01/how-netflix-reverse-engineered-hollywood/282679/">How Netflix Reverse Engineered Hollywood</a></li>
+<li><a href="http://www.elegantthemes.com/blog/tips-tricks/setbacks-to-information-architecture-during-web-design-how-to-overcome-them?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+ElegantThemes+%28Elegant+Themes+Blog%29">Setbacks to Information Architecture During Web Design & How to Overcome Them</a></li>
+<li><a href="http://www.webdesignerdepot.com/2015/02/the-ultimate-guide-to-information-architecture/">The Ultimate Guide to Information Architecture</a></li>
+<li><a href="http://storyneedle.com/ontology-for-the-perplexed/">Ontology for the Perplexed</a></li>
+<li><a href="http://www.cmswire.com/information-management/facing-the-facts-about-information-management/">Facing the facts about Information Management</a></li>
+<li><a href="https://medium.com/goodux-badux/towards-a-new-information-architecture-f38b5cc904c0">Toward a New Information Architecture</a></li>
+<li><a href="https://medium.com/information-architecture/medium-7ddf2ad4bc3">Information Architecture Summit 2014 Closing Plenary</a></li>
+</ul>
+<br>
+
+</div>
 
 
 <div id="Footerwrapper">

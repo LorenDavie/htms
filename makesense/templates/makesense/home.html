@@ -18,6 +18,7 @@
 	a:hover {color:#ef1414;}
 	a:active {color: #000000;}
 	ul {list-style-type: none; margin:0;line-height: 1.4em;}
+    a.chapterlink {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
 
 
 	h1 {font-family: helvetica; text-align: left; font-size: 1.5em; line-height:1.5em;}
@@ -47,8 +48,8 @@
 	
 #search {float: right; width: 300px; margin: 20px; 120px; 10px; 10px; background:#ffffff;color: #ffffff;}
 	input[type="text"] {width: 180px; padding: 5px;}
-	button {padding:7px; background-color: #000000; border: 1px solid #ffffff; color:#ffffff; text-decoration:none; font-weight: bold;}
-	button:hover {color: ef1414;background-color:e3e2e2;}
+	input[type="submit"] {padding:7px; background-color: #000000; border: 1px solid #ffffff; color:#ffffff; text-decoration:none; font-weight: bold;}
+	input[type="submit"]:hover {color: ef1414;background-color:e3e2e2;}
 
 #footerWrapper {clear:both; padding-top: 30px;}
 #footer {clear:both; padding:5px 20px; width:800px; background:#000000;}
@@ -123,205 +124,25 @@
 </div>
 {% for chapter in chapters %}
 <div id="Chapter">
-<h2>Chapter {{ chapter.order }}: {{ chapter.name }}</h2>
+<h2><a href="/chapter/{{ chapter.order }}/{{ chapter.slug }}/" class="chapterlink">Chapter {{ chapter.order }}: {{ chapter.name }}</a></h2>
 {% for page in chapter.pages.all %}
 <h3><a href="/page/{{ page.page_number }}/{{ page.slug }}/">{{ page.title }}</a></h3>
 {% endfor %}
 </div>
-<div id="Lessons"><h3>Slide Decks & Worksheets</h3>
+<div id="Lessons"><h3>Slide Decks &amp; Worksheets</h3>
 <ul>
 <li><a href="#"><b>Worksheet:</b> Draw Your Mess</a></li>
 <li><a href="#"><b>Slide Deck:</b> The world is a mess.</a></li>
-<li><a href="#"><b>Slide Deck:</b> Users & Stakeholders</a></li>
+<li><a href="#"><b>Slide Deck:</b> Users &amp; Stakeholders</a></li>
 </ul>
 </div>
 {% endfor %}
-{# <div id="Chapter"> #}
-{# <h2>Chapter 2: State your Intent</h2> #}
-{# <h3><a href="#">Intent is language.</a></h3> #}
-{# <h3><a href="#">What is <i>good</i>?</a></h3> #}
-{# <h3><a href="#">Good is in the eye of the beholder.</a> </h3> #}
-{# <h3><a href="#">Looking good versus being good.</a></h3> #}
-{# <h3><a href="#">Meaning can get lost in translation.</a></h3> #}
-{# <h3><a href="#">Who matters?</a></h3> #}
-{# <h3><a href="#">Start with <i>why</i>.</a></h3> #}
-{# <h3><a href="#"><i>What</i> before <i>how</i>.</a></h3> #}
-{# <h3><a href="#"><i>How</i> varies widely.</a></h3> #}
-{# <h3><a href="#"><i>Why</i>, <i>what</i>, and <i>how</i> are deeply interrelated.</a></h3> #}
-{# <h3><a href="#">Language is the material of intent.</a></h3> #}
-{# <h3><a href="#">Meet Karen.</a></h3> #}
-{# <h3><a href="#">State your intent.</a></h3> #}
-{# </div> #}
-{# <div id="Lessons"> #}
-{# <h3>Slide Decks & Worksheets</h3> #}
-{# <ul> #}
-{# <li><a href="#"><b>Worksheet:</b> Choose Your Words</a></li> #}
-{# <li><a href="#"><b>Slide Deck:</b> What is Good?</a></li> #}
-{# <li><a href="#"><b>Slide Deck:</b> Why, What & How</a></li> #}
-{#  #}
-{# </ul> #}
-{#  #}
-{# </div> #}
-{# <div id="Chapter"> #}
-{# <h2><a name="Reality">Chapter 3: Face Reality</a></h2> #}
-{# <h3><a href="#">By facing reality, we can find solutions.</a></h3> #}
-{# <h3><a href="#">Reality involves many players.</a></h3> #}
-{# <h3><a href="#">Reality involves many factors.</a></h3> #}
-{# <h3><a href="#">Reality happens across channels and contexts.</a></h3> #}
-{# <h3><a href="#">Reality has many intersections.</a></h3> #}
-{# <h3><a href="#">Reality doesn&#39;t always fit existing patterns.</a></h3> #}
-{# <h3><a href="#">Objects let us have deeper conversations about reality.</a></h3> #}
-{# <h3><a href="#">Start with scope and scale.</a></h3> #}
-{# <h3><a href="#">Timescale matters.</a></h3> #}
-{# <h3><a href="#">Reality involves many players.</a></h3> #}
-{# <h3><a href="#">Architecture before design.</a></h3> #}
-{# <h3><a href="#">Keep it tidy.</a></h3> #}
-{# <h3><a href="#">Expand your toolbox.</a></h3> #}
-{# <ul> #}
-{# <li><a href="#">Block Diagram</a> </li> #}
-{# <li><a href="#">Flow Diagram</a></li> #}
-{# <li><a href="#">Gantt Chart</a></li> #}
-{# <li><a href="#">Quadrant Diagram</a></li> #}
-{# <li><a href="#">Venn Diagram</a></li> #}
-{# <li><a href="#">Swim Lane Diagram</a></li> #}
-{# <li><a href="#">Hierarchy Diagram</a></li> #}
-{# <li><a href="#">Mind Map </a></li> #}
-{# <li><a href="#">Schematic </a></li> #}
-{# <li><a href="#">Journey Map</a></li> #}
-{# </ul> #}
-{# <h3><a href="#">Try diagramming.</a></h3> #}
-{# <h3><a href="#">Meet Maggie.</a></h3> #}
-{# <h3><a href="#">Face your reality.</a></h3> #}
-{# </div> #}
-{# <div id="Lessons"> #}
-{# <h3>Slide Decks & Worksheets</h3> #}
-{# <ul> #}
-{# <li><a href="#"><b>Worksheet:</b> Diagram Your Reality</a></li> #}
-{# <li><a href="#"><b>Worksheet:</b> Diagram Critique Bingo</a></li> #}
-{# <li><a href="#"><b>Slide Deck:</b> Channels & Contexts</a></li> #}
-{# <li><a href="#"><b>Slide Deck:</b> Diagramming reality</a></li> #}
-{# </ul> #}
-{# </div> #}
-{#  #}
-{#  #}
-{# <div id="Chapter"> #}
-{# <h2><a name="Direction">Chapter 4: Choose a Direction</a></h2> #}
-{# <h3><a href="#">Moving from <i>why</i> to <i>what</i>.</a></h3> #}
-{# <h3><a href="#">We work at different levels.</a></h3> #}
-{# <h3><a href="#">What <i>are</i> you making?</a></h3> #}
-{# <h3><a href="#">These levels deeply affect one another.</a></h3> #}
-{# <h3><a href="#">We make places.</a></h3> #}
-{# <h3><a href="#">There are spaces between the places we make.</a></h3> #}
-{# <h3><a href="#">Language matters.</a></h3> #}
-{# <h3><a href="#">Reduce linguistic insecurity.</h3> #}
-{# <h3><a href="#">Understand ontology.</a></h3> #}
-{# <h3><a href="#">Design <i>with</i>, not for.</a></h3> #}
-{# <h3><a href="#">Create a list of words you say.</a></h3> #}
-{# <h3><a href="#">Create a list of words you don&#39;t say.</a></h3> #}
-{# <h3><a href="#">Words I don&#39;t say in this eBook.</a></h3> #}
-{# <h3><a href="#">Define terms for outsiders.</a></h3> #}
-{# <h3><a href="#">Understand the past.</a></h3> #}
-{# <h3><a href="#">Think about nouns and verbs.</a></h3> #}
-{# <h3><a href="#">Think about relationships between nouns and verbs.</a></h3> #}
-{# <h3><a href="#">Watch out for options and opinions.</a></h3> #}
-{# <h3><a href="#">Opinions are like&#133;</a></h3> #}
-{# <h3><a href="#">Admit where you are.</a></h3> #}
-{# <h3><a href="#">Meet Rasheed.</a></h3> #}
-{# <h3><a href="#">Control your vocabulary.</a></h3> #}
-{# </div> #}
-{#  #}
-{# <div id="Lessons"> #}
-{# <h3>Slide Decks & Worksheets</h3> #}
-{# <ul> #}
-{# <li><a href="#"><b>Worksheet:</b> Choose a Direction</a></li> #}
-{# <li><a href="#"><b>Slide Deck:</b> The role of language</a></li> #}
-{# <li><a href="#"><b>Slide Deck:</b> Controlled vocabularies</a></li> #}
-{# </ul> #}
-{# </div> #}
-{#  #}
-{# <div id="Chapter"> #}
-{# <h2><a name="Distance">Chapter 5: Measure the Distance</a> </h2> #}
-{# <h3><a href="#">There&#39;s distance between reality and your intent.</a></h3> #}
-{# <h3><a href="#">Goals are our lens on the world.</a></h3> #}
-{# <h3><a href="#">Progress is as important to measure as success.</a></h3> #}
-{# <h3><a href="#">Most things can be measured by systems or people.</a></h3> #}
-{# <h3><a href="#">Common indicators.</a></h3> #}
-{# <h3><a href="#">Use worksheets to mine data from people.</a></h3> #}
-{# <h3><a href="#">Baselines help us stay in touch with reality.</a></h3> #}
-{# <h3><a href="#">Flags tell us if we&#39;re headed in the right direction.</a></h3> #}
-{# <h3><a href="#">Measurements have rhythm.</a></h3> #}
-{# <h3><a href="#">Fuzzy is normal.</a></h3> #}
-{# <h3><a href="#">Meet Jim.</a></h3> #}
-{# <h3><a href="#">Set your goals.</a></h3> #}
-{# </div> #}
-{#  #}
-{# <div id="Lessons"> #}
-{# <h3>Slide Decks & Worksheets</h3> #}
-{# <ul> #}
-{# <li><a href="#"><b>Worksheet:</b> Measure the Distance</a></li> #}
-{# <li><a href="#"><b>Slide Deck:</b> Quantifying intent</a></li> #}
-{# </ul> #}
-{# </div> #}
-{#  #}
-{# <div id="Chapter"> #}
-{# <h2><a name="Structure">Chapter 6: Play with Structure</a></h2> #}
-{# <h3><a href="#">There are many ways to structure things.</a></h3> #}
-{# <h3><a href="#">Taxonomy is how we arrange things.</a></h3> #}
-{# <h3><a href="#">We combine taxonomies to create unique forms.</a></h3> #}
-{# <h3><a href="#">Sorting is easier than deciding how to sort.</a></h3> #}
-{# <h3><a href="#">Classification can be exact or ambiguous.</a></h3> #}
-{# <h3><a href="#">Ambiguity costs clarity; exactitude costs flexibility.</a></h3> #}
-{# <h3><a href="#">Ambiguity hides in simplicity.</a></h3> #}
-{# <h3><a href="#">Facets are the lenses we use to classify.</a></h3> #}
-{# <h3><a href="#">Identify facts.</a></h3> #}
-{# <h3><a href="#">Humans are complex.</a></h3> #}
-{# <h3><a href="#">The way you organize things says a lot about you.</a></h3> #}
-{# <h3><a href="#">Taxonomies can be hierarchical or heterarchical.</a></h3> #}
-{# <h3><a href="#">Taxonomies can be sequential.</a></h3> #}
-{# <h3><a href="#">Hypertexts bridge taxonomies.</a></h3> #}
-{# <h3><a href="#">Most things need a mix of taxonomic approaches.</a></h3> #}
-{# <h3><a href="#">Meet Joan</a> </h3> #}
-{# <h3><a href="#">Play with Structure</a></h3> #}
-{# </div> #}
-{#  #}
-{# <div id="Lessons"> #}
-{# <h3>Slide Decks & Worksheets</h3> #}
-{# <ul> #}
-{# <li><a href="#"><b>Worksheet:</b> Learn these Patterns</a></li> #}
-{# <li><a href="#"><b>Slide Deck:</b> Playtesting structures</a></li> #}
-{# </ul> #}
-{# </div> #}
-{#  #}
-{# <div id="Chapter"> #}
-{# <h2><a name="Adjust">Chapter 7: Prepare to Adjust</a></h2> #}
-{# <h3><a href="#">Adjustments are a part of reality.</a></h3> #}
-{# <h3><a href="#">The sum is greater than its parts.</a></h3> #}
-{# <h3><a href="#">It&#39;s easy to reach agreement alone.</a></h3> #}
-{# <h3><a href="#"><strike>Argue about</strike> discuss it until it&#39;s clear.</a></h3> #}
-{# <h3><a href="#">If it isn&#39;t under the floorboards, it&#39;s a fa&#231;ade.</a></h3> #}
-{# <h3><a href="#">We serve many masters.</a></h3> #}
-{# <h3><a href="#">Make room for information architecture.</a></h3> #}
-{# <h3><a href="#">&#34;Hey, nice IA!&#34; &mdash; said no one, ever.</a></h3> #}
-{# <h3><a href="#">Be the filter, not the grounds.</a></h3> #}
-{# <h3><a href="#">This is hard.</a></h3> #}
-{# <h3><a href="#">It&#39;s far more <i>rewarding</i> than hard.</a></h3> #}
-{# <h3><a name="Abby">Meet Abby.</a></h3> #}
-{# <h3><a href="#">Make sense yet?</a></h3> #}
-{# </div> #}
-{#  #}
-{# <div id="Lessons"> #}
-{# <h3>Slide Decks & Worksheets</h3> #}
-{# <ul> #}
-{# <li><a href="#"><b>Worksheet:</b> How to discuss IA</a></li> #}
-{# <li><a href="#"><b>Slide Deck:</b> IA, therefore I am</a></li> #}
-{# </ul> #}
 </div>
-<div id="Footerwrapper">
+<div id="Footerwrapper" class="wrapper">
 <div id="footer">
 <p>&#xA9; 2015 <a href="http://www.abbytheia.com">Abby the IA</a> | Powered by <a href="http://www.axilent.com">Axilent</a></p>
 </div>
 </div>
 </div>
-
 
 </html>

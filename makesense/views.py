@@ -55,3 +55,10 @@ def search(request):
     query = request.GET.get('q',None)
     results = Page.objects.search(query)
     return {'results':results,'query':query}
+
+@template('makesense/resources.html')
+def resources(request):
+    """
+    IA Resources.
+    """
+    return {}
