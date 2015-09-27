@@ -120,7 +120,14 @@
     {{ alt_term.alternative_term }}&nbsp;({{ alt_term.word_type|lower }})
     {% endfor %}
 </p>
-<p><b>Related to:</b> <a href="#">Related Term</a>, <a href="#">Related Term</a></p>
+{% if term.related.exists %}
+<p>
+    <b>Related to:</b> 
+   {% for related_term in term.related.all %}
+   <a href="/term/{{ related_term.word_type_slug }}/{{ related_term.term_slug }}/">{{ related_term.term }}{% if not forloop.last %},{% endif %}</a>
+   {% endfor %} 
+</p>
+{% endif %}
 <br>
 
 </div>
