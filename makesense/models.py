@@ -22,59 +22,6 @@ class Book(models.Model,ACEContent):
             'dedication':'dedication',
         }
 
-class Example(models.Model,ACEContent):
-    """ 
-    An example for the chapter.
-    """
-    title = models.CharField(max_length=100)
-    body = models.TextField(blank=True)
-    
-    def __unicode__(self):
-        return self.title
-    
-    class ACE:
-        content_type = 'Example'
-        field_map = {
-            'title':'title',
-            'body':'body',
-        }
-
-class Excercise(models.Model,ACEContent):
-    """ 
-    An excercise for the user.
-    """
-    title = models.CharField(max_length=100)
-    body = models.TextField(blank=True)
-    
-    def __unicode__(self):
-        return self.title
-    
-    class ACE:
-        content_type = 'Excercise'
-        field_map = {
-            'title':'title',
-            'body':'body',
-        }
-
-class WorkSheet(models.Model,ACEContent):
-    """ 
-    A worksheet for the user.
-    """
-    title = models.CharField(max_length=100)
-    downloadable = models.URLField(max_length=400,blank=True)
-    image = models.URLField(max_length=400,blank=True)
-    
-    def __unicode__(self):
-        return self.title
-    
-    class ACE:
-        content_type = 'WorkSheet'
-        field_map = {
-            'title':'title',
-            'downloadable':'downloadable',
-            'image':'image',
-        }
-
 class Chapter(models.Model,ACEContent):
     """ 
     A chapter in the book.
@@ -82,13 +29,22 @@ class Chapter(models.Model,ACEContent):
     book = models.ForeignKey(Book,related_name='chapters')
     order = models.IntegerField()
     name = models.CharField(max_length=100)
-    example = models.ForeignKey(Example,unique=True,null=True)
-    excercise = models.ForeignKey(Excercise,unique=True,null=True)
-    worksheet = models.ForeignKey(WorkSheet,unique=True,null=True)
     slug = models.SlugField()
     
     def __unicode__(self):
         return self.name
+    
+    def main_pages(self):
+        """ 
+        Gets the non-supporting pages.
+        """
+        return self.pages.filter(is_supporting_material=False)
+    
+    def supporting_material(self):
+        """ 
+        Gets supporting material.
+        """
+        return self.pages.filter(is_supporting_material=True)
     
     class Meta:
         unique_together = (('book','order'),)
@@ -100,9 +56,6 @@ class Chapter(models.Model,ACEContent):
             'book':'book',
             'order':'order',
             'name':'name',
-            #'example':'example',
-            #'excercise':'excercise',
-            #'worksheet':'worksheet',
             'slug':'slug',
         }
 
@@ -116,6 +69,9 @@ class Page(models.Model,ACEContent):
     graphic = models.URLField(max_length=400,blank=True, null=True)
     slug = models.SlugField()
     ordering = models.IntegerField(default=0)
+    is_supporting_material = models.BooleanField(default=False)
+    supporting_material_type = models.CharField(null=True, max_length=100)
+    download = models.URLField(null=True)
     
     objects = ContentManager()
     
@@ -134,6 +90,23 @@ class Page(models.Model,ACEContent):
         """
         return self.body.count(term)
     
+    def get_is_supporting_material(self):
+        """ 
+        Accessor for is_supporting_material
+        """
+        return 'True' if self.is_supporting_material else 'False'
+    
+    def set_is_supporting_material(self,value):
+        """ 
+        Mutator for is_supporting_material.
+        """
+        if value == 'True':
+            self.is_supporting_material = True
+        else:
+            self.is_supporting_material = False
+    
+    supporting_material_prop = property(get_is_supporting_material,set_is_supporting_material)
+    
     class Meta:
         ordering = ['ordering']
     
@@ -146,6 +119,9 @@ class Page(models.Model,ACEContent):
             'graphic':'graphic',
             'slug':'slug',
             'ordering':'ordering',
+            'is_supporting_material':'supporting_material_prop',
+            'supporting_material_type':'supporting_material_type',
+            'download':'download',
         }
 
 class TermManager(models.Manager):

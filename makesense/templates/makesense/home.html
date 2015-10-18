@@ -125,17 +125,19 @@
 {% for chapter in chapters %}
 <div id="Chapter">
 <h2><a href="/chapter/{{ chapter.order }}/{{ chapter.slug }}/" class="chapterlink">Chapter {{ chapter.order }}: {{ chapter.name }}</a></h2>
-{% for page in chapter.pages.all %}
+{% for page in chapter.main_pages %}
 <h3><a href="/page/{{ page.page_number }}/{{ page.slug }}/">{{ page.title }}</a></h3>
 {% endfor %}
 </div>
+{% if chapter.supporting_material.exists %}
 <div id="Lessons"><h3>Slide Decks &amp; Worksheets</h3>
 <ul>
-<li><a href="#"><b>Worksheet:</b> Draw Your Mess</a></li>
-<li><a href="#"><b>Slide Deck:</b> The world is a mess.</a></li>
-<li><a href="#"><b>Slide Deck:</b> Users &amp; Stakeholders</a></li>
+{% for supporting_page in chapter.supporting_material %}
+<li><a href="/page/{{ supporting_page.page_number }}/{{ supporting_page.slug }}/"><b>{{ supporting_page.supporting_material_type }}:</b> {{ supporting_page.title }}</a></li>
+{% endfor %}
 </ul>
 </div>
+{% endif %}
 {% endfor %}
 </div>
 <div id="Footerwrapper" class="wrapper">
