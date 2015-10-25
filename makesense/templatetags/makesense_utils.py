@@ -10,9 +10,9 @@ def active_term(value,term):
     Modifies links so only the active term is added to the active-term class.
     """
     new_term_words = []
-    match_string = 'href="/term/%s/%s/">%s</a>' % (term.word_type_slug,term.term_slug,term.term_slug)
-    replace_string = 'href="/term/%s/%s/" class="active-term">%s</a>' % (term.word_type_slug,term.term_slug,term.term_slug)
-    alt_match_prefix = 'href="/term/%s/%s/">' % (term.word_type_slug,term.term_slug)
+    match_string = 'href="/term/%s/%s/" class="term-link">%s</a>' % (term.word_type_slug,term.term_slug,term.term_slug)
+    replace_string = 'href="/term/%s/%s/" class="term-link active-term">%s</a>' % (term.word_type_slug,term.term_slug,term.term_slug)
+    alt_match_prefix = 'href="/term/%s/%s/" class="term-link">' % (term.word_type_slug,term.term_slug)
     
     alt_matches = []
     alt_replace_dict = {}
@@ -20,7 +20,7 @@ def active_term(value,term):
         alt_match = '%s%s</a>' % (alt_match_prefix,alt.alternative_term)
         alt_matches.append(alt_match)
         alt_matches.append(alt_match.lower())
-        alt_replace = 'href="/term/%s/%s/" class="active-term">%s</a>' % (term.word_type_slug,term.term_slug,alt.alternative_term)
+        alt_replace = 'href="/term/%s/%s/" class="active-term term-link">%s</a>' % (term.word_type_slug,term.term_slug,alt.alternative_term)
         alt_replace_dict[alt_match] = alt_replace
         alt_replace_dict[alt_match.lower()] = alt_replace.lower()
 
