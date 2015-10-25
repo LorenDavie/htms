@@ -110,12 +110,14 @@
 </div>
 <div id="Lexicon">
 {% for group in groups%}
+{% if group.terms.exists %}
 <h3>{{ group.key|capfirst }}</h3>
 <ul>
     {% for term in group.terms %}
     <li><a href="/term/{{ term.word_type_slug }}/{{ term.term_slug }}/">{{ term.term }} ({{ term.word_type|lower }})</a></li>
     {% endfor %}
 </ul>
+{% endif %}
 {% endfor %}
 <br>
 <br>
