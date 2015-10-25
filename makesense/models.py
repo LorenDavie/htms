@@ -127,6 +127,20 @@ class Page(models.Model,ACEContent):
         except Page.DoesNotExist:
             return None
     
+    def is_list_element(self):
+        """ 
+        Tests if this page is part of a list.
+        """
+        if '.' in self.title:
+            title_elements = self.title.split('.')
+            try:
+                int(title_elements[0])
+                return True # successful cast, title starts with in, indicating list element
+            except ValueError:
+                pass # unsuccessful cast
+        
+        return False # if we're here, this isn't a list element
+    
     class Meta:
         ordering = ['ordering']
     
