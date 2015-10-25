@@ -27,7 +27,7 @@ class Command(BaseCommand):
                 
                 if term:
                     print 'linking',body_word,'for page',page.title
-                    new_body_list.append('<a href="/term/%s/%s/">%s</a>' % (term.word_type_slug,term.term_slug,body_word))
+                    new_body_list.append('<a href="/term/%s/%s/" class="term-link">%s</a>' % (term.word_type_slug,term.term_slug,body_word))
                 else:
                     new_body_list.append(body_word)
             
