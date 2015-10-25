@@ -79,7 +79,7 @@ class Command(BaseCommand):
                 # reached the end
                 page.body = page_body
                 page.save()
-                #page.push_to_library()
+                #page.push_to_library() # pages now pushed in link_pages command
                 return
             elif sibling.name == 'img':
                 page.graphic = sibling['src']
