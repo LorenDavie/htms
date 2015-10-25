@@ -107,6 +107,26 @@ class Page(models.Model,ACEContent):
     
     supporting_material_prop = property(get_is_supporting_material,set_is_supporting_material)
     
+    def next_page(self):
+        """ 
+        Gets the next page, or None if there is no next page.
+        """
+        try:
+            next_page_order = self.ordering + 1
+            return self.chapter.pages.get(ordering=next_page_order)
+        except Page.DoesNotExist:
+            return None
+    
+    def previous_page(self):
+        """ 
+        Gets the previous page, if it exists. Otherwise returns None.
+        """
+        try:
+            previous_page_order = self.ordering - 1
+            return self.chapter.pages.get(ordering=previous_page_order)
+        except Page.DoesNotExist:
+            return None
+    
     class Meta:
         ordering = ['ordering']
     
