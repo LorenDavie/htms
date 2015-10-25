@@ -3,7 +3,6 @@ Scans pages for lexicon terms, build links.
 """
 from makesense.models import Term, TermAlternative, Page
 from django.core.management.base import BaseCommand
-from django.utils.text import slugify
 
 class Command(BaseCommand):
     """
