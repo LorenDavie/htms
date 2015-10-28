@@ -47,7 +47,7 @@ def active_term(value,term):
         if word.lower() == match_string or word.lower() == match_2_string or word.lower() == match_3_string:
             print 'word',word,'matches string',match_string,'or',match_2_string
             if word.lower() == match_3_string:
-                new_term_words.append(alt_match_3)
+                new_term_words.append(match_3_replace)
             else:
                 new_term_words.append(replace_string)
         elif word.lower() in alt_matches:
