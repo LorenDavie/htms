@@ -27,6 +27,7 @@ urlpatterns = patterns('makesense.views',
     url(r'^term/(?P<word_type_slug>\w+)/(?P<term_slug>[\w-]+)/$','term'),
     url(r'^search/$','search'),
     url(r'^resources/$','resources'),
+    url(r'^djax/',include('djax.urls')),
 )
 
 if settings.DEBUG:
