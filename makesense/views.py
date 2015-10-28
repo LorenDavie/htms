@@ -53,6 +53,8 @@ def search(request):
     Searches the site.;
     """
     query = request.GET.get('q',None)
+    if not query:
+        return {'results':None,'query':None}
     results = Page.objects.search(query)
     return {'results':results,'query':query}
 
