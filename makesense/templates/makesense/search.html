@@ -121,8 +121,8 @@
 <hr>
 {% if query %}
 <p><b>{{ query }}</b> was found on {{ results.count }} page{{ results.count|pluralize }}.</p>
-{% endif %}
 <hr>
+{% endif %}
 {% if results %}
 {% for page in results %}
 <p><a href="/page/{{ page.page_number }}/{{ page.slug }}/">Chapter {{ page.chapter.order }}: {{ page.chapter }} | Page {{ page.page_number }} {{ page }} </a></p>
