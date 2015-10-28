@@ -127,7 +127,7 @@
 <div id="Chapter">
 <h2><a href="/chapter/{{ chapter.order }}/{{ chapter.slug }}/" class="chapterlink">Chapter {{ chapter.order }}: {{ chapter.name }}</a></h2>
 {% for page in chapter.main_pages %}
-<h3><a href="/page/{{ page.page_number }}/{{ page.slug }}/"{% if page.is_list_element %} class="list-element"{% endif %}>{{ page.title }}</a></h3>
+<h3><a href="/page/{{ page.page_number }}/{{ page.slug }}/"{% if page.is_list_element %} class="list-element"{% endif %}>{{ page.title|safe }}</a></h3>
 {% endfor %}
 </div>
 {% if chapter.supporting_material.exists %}
