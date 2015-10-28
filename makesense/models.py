@@ -46,6 +46,53 @@ class Chapter(models.Model,ACEContent):
         """
         return self.pages.filter(is_supporting_material=True)
     
+    def first_page(self):
+        """
+        Returns the first page of the chapter.
+        """
+        return self.pages.all()[0]
+    
+    def last_page(self):
+        """
+        Returns the last page of the chapter.
+        """
+        last_index = self.pages.count() - 1
+        return self.pages.all()[last_index]
+    
+    def has_previous_chapter(self):
+        """
+        Returns True if the is a chapter prior to this one, False otherwise.
+        """
+        previous_order = self.order - 1
+        return self.book.chapters.filter(order=previous_order).exists()
+    
+    def previous_chapter(self):
+        """
+        Returns the previous chapter, or None if there is no prior chapter.
+        """
+        previous_order = self.order - 1
+        try:
+            return self.book.chapters.get(order=previous_order)
+        except Chapter.DoesNotExist:
+            return None
+    
+    def has_next_chapter(self):
+        """
+        Returns True if the chapter has another chapter following this one, False otherwise.
+        """
+        next_order = self.order + 1
+        return self.book.chapters.filter(order=next_order).exists()
+    
+    def next_chapter(self):
+        """
+        Gets the chapter following this one, if it exists, or None.
+        """
+        next_order = self.order + 1
+        try:
+            return self.book.chapters.get(order=next_order)
+        except Chapter.DoesNotExist:
+            return None
+    
     class Meta:
         unique_together = (('book','order'),)
         ordering = ['order']
@@ -116,7 +163,7 @@ class Page(models.Model,ACEContent):
             return self.chapter.pages.get(ordering=next_page_order)
         except Page.DoesNotExist:
             return None
-    
+        
     def previous_page(self):
         """ 
         Gets the previous page, if it exists. Otherwise returns None.
@@ -126,6 +173,13 @@ class Page(models.Model,ACEContent):
             return self.chapter.pages.get(ordering=previous_page_order)
         except Page.DoesNotExist:
             return None
+    
+    def has_previous_page(self):
+        """
+        Returns True if there is a previous page, False otherwise.
+        """
+        previous_page_order = self.ordering - 1
+        return self.chapter.pages.filter(ordering=previous_page_order).exists()
     
     def is_list_element(self):
         """ 

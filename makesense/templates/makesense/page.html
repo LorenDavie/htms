@@ -134,7 +134,7 @@
             <div id="Controls">
                 <hr>
                 <br>
-                {% if page.previous_page %}<a href="/page/{{ page.previous_page.page_number }}/{{ page.previous_page.slug }}/">&lt; Previous Page</a>{% endif %}<button>Page {{ page.page_number }} of 160</button>{% if page.next_page %}<a href="/page/{{ page.next_page.page_number }}/{{ page.next_page.slug }}/">Next Page &gt;</a>{% endif %}
+                {% if page.has_previous_page %}<a href="/page/{{ page.previous_page.page_number }}/{{ page.previous_page.slug }}/">&lt; Previous Page</a>{% else %}<a href="/chapter/{{ page.chapter.order }}/{{ page.chapter.slug }}/">&lt; Previous Page</a>{% endif %}<button>Page {{ page.page_number }} of 160</button>{% if page.next_page %}<a href="/page/{{ page.next_page.page_number }}/{{ page.next_page.slug }}/">Next Page &gt;</a>{% else %}{% if page.chapter.has_next_chapter %}<a href="/chapter/{{ page.chapter.next_chapter.order }}/{{ page.chapter.next_chapter.slug }}/">Next Page &gt;</a>{% endif %}{% endif %}
                 <table>
                     <tr>
                         <td></td>

@@ -126,9 +126,15 @@
 <hr>
 <br>
 <Table>
-<tr><a href="TOC.html">< Previous Page</a></tr>
-<tr><button>Share Page 11 of 160</button></tr>
-<tr><a href="#">Next Page ></a></tr>
+<tr>
+    {% if chapter.has_previous_chapter %}
+    <a href="/page/{{ chapter.previous_chapter.last_page.page_number }}/{{ chapter.previous_chapter.last_page.slug }}/">&lt; Previous Page</a>
+    {% else %}
+    <a href="/">&lt; Previous Page</a>
+    {% endif %}
+</tr>
+<tr><button>Chapter {{ chapter.order }}</button></tr>
+<tr><a href="/page/{{ chapter.first_page.page_number }}/{{ chapter.first_page.slug }}/">Next Page &gt;</a></tr>
 </table>
 </div>
 
