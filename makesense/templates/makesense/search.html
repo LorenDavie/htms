@@ -111,27 +111,28 @@
 
 <div id="Results">
 
-
+{% if query %}
 <h2>Results for: {{ query }}</h2>
-
+{% else %}
+<h2>Please Enter A Query</h2>
+{% endif %}
 </div>
 <div id="Results">
 <hr>
+{% if query %}
 <p><b>{{ query }}</b> was found on {{ results.count }} page{{ results.count|pluralize }}.</p>
+{% endif %}
 <hr>
+{% if results %}
 {% for page in results %}
 <p><a href="/page/{{ page.page_number }}/{{ page.slug }}/">Chapter {{ page.chapter.order }}: {{ page.chapter }} | Page {{ page.page_number }} {{ page }} </a></p>
 
 {{ page.body|safe }}
 <hr>
 {% endfor %}
-{# <p><a href="#">Slide Deck: Name </a></p> #}
-{# <p>A <span class="highlight">search term</span> is important because blah blah blah</p> #}
-{# <hr> #}
-{# <p><a href="#">Worksheet: Name </a></p> #}
-{# <p>A <span class="highlight">search term</span> is important because blah blah blah</p> #}
-{# <hr> #}
-
+{% else %}
+<p>Sorry, no results found.  Please try a different query.</p>
+{% endif %}
 
 </div>
 
