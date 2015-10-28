@@ -122,7 +122,7 @@
         <div class="wrapper">
             <div id="Page">
                 <h2>
-                    {{ page.title }}
+                    {{ page.title|safe }}
                 </h2>
                {{ page.body|safe }}
             </div>
