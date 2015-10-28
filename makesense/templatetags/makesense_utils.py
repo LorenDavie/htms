@@ -12,12 +12,17 @@ def active_term(value,term):
     new_term_words = []
     match_string = 'href="/term/%s/%s/" class="term-link">%s</a>' % (term.word_type_slug,term.term_slug,term.term_slug)
     match_2_string = 'href="/term/%s/%s/">%s</a>' % (term.word_type_slug,term.term_slug,term.term_slug)
+    match_3_string = 'href="/term/%s/%s/"' % (term.word_type_slug,term.term_slug)
     replace_string = 'href="/term/%s/%s/" class="term-link active-term">%s</a>' % (term.word_type_slug,term.term_slug,term.term_slug)
     alt_match_prefix = 'href="/term/%s/%s/" class="term-link">' % (term.word_type_slug,term.term_slug)
     alt_match_2_prefix = 'href="/term/%s/%s/">' % (term.word_type_slug,term.term_slug)
+    alt_match_3 = 'href="/term/%s/%s/"' % (term.word_type_slug,term.term_slug)
+    
+    match_3_replace = 'href="/term/%s/%s/" class="active-term term-link"' % (term.word_type_slug,term.term_slug)
     
     print 'match string:',match_string
     print 'match 2 string:',match_2_string
+    print 'match 3 string',match_3_string
     
     alt_matches = []
     alt_replace_dict = {}
@@ -33,10 +38,13 @@ def active_term(value,term):
         alt_replace_dict[alt_match.lower()] = alt_replace.lower()
         alt_replace_dict[alt_match_2.lower()] = alt_replace.lower()
     
+    alt_matches.append(alt_match_3)
+    alt_replace_dict[alt_match_3] = match_3_replace
+    alt_replace_dict[alt_match_3.lower()] = match_3_replace
     print 'alt match strings:',alt_matches
     
     for word in value.split(' '):
-        if word.lower() == match_string or word.lower() == match_2_string:
+        if word.lower() == match_string or word.lower() == match_2_string or word.lower() == match_3_string:
             print 'word',word,'matches string',match_string,'or',match_2_string
             new_term_words.append(replace_string)
         elif word.lower() in alt_matches:
