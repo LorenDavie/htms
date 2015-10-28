@@ -46,7 +46,10 @@ def active_term(value,term):
     for word in value.split(' '):
         if word.lower() == match_string or word.lower() == match_2_string or word.lower() == match_3_string:
             print 'word',word,'matches string',match_string,'or',match_2_string
-            new_term_words.append(replace_string)
+            if word.lower() == match_3_string:
+                new_term_words.append(alt_match_3)
+            else:
+                new_term_words.append(replace_string)
         elif word.lower() in alt_matches:
             print 'word',word,'in alt matches',alt_matches
             new_term_words.append(alt_replace_dict[word.lower()])
