@@ -20,9 +20,9 @@ def active_term(value,term):
     
     match_3_replace = 'href="/term/%s/%s/" class="active-term term-link"' % (term.word_type_slug,term.term_slug)
     
-    print 'match string:',match_string
-    print 'match 2 string:',match_2_string
-    print 'match 3 string',match_3_string
+    #print 'match string:',match_string
+    #print 'match 2 string:',match_2_string
+    #print 'match 3 string',match_3_string
     
     alt_matches = []
     alt_replace_dict = {}
@@ -41,20 +41,20 @@ def active_term(value,term):
     alt_matches.append(alt_match_3)
     alt_replace_dict[alt_match_3] = match_3_replace
     alt_replace_dict[alt_match_3.lower()] = match_3_replace
-    print 'alt match strings:',alt_matches
+    #print 'alt match strings:',alt_matches
     
     for word in value.split(' '):
         if word.lower() == match_string or word.lower() == match_2_string or word.lower() == match_3_string:
-            print 'word',word,'matches string',match_string,'or',match_2_string
+            #print 'word',word,'matches string',match_string,'or',match_2_string
             if word.lower() == match_3_string:
                 new_term_words.append(match_3_replace)
             else:
                 new_term_words.append(replace_string)
         elif word.lower() in alt_matches:
-            print 'word',word,'in alt matches',alt_matches
+            #print 'word',word,'in alt matches',alt_matches
             new_term_words.append(alt_replace_dict[word.lower()])
         else:
-            print 'no match for word',word
+            #print 'no match for word',word
             new_term_words.append(word)
     
     return u' '.join(new_term_words)
