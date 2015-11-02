@@ -101,7 +101,7 @@ class Chapter(models.Model,ACEContent):
         if self.has_previous_chapter():
             return self.previous_chapter().get_page_count_offset() + self.pages.count()
         else:
-            return self.pages.count()
+            return self.pages.count() + settings.FRONT_MATTER_OFFSET
     
     class Meta:
         unique_together = (('book','order'),)
@@ -148,7 +148,7 @@ class Page(models.Model,ACEContent):
         if self.chapter.has_previous_chapter():
             return self.page_number() + self.chapter.previous_chapter().get_page_count_offset()
         else:
-            return self.page_number()
+            return self.page_number() + settings.FRONT_MATTER_OFFSET
     
     def term_usage(self,term):
         """
