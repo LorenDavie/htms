@@ -4,6 +4,7 @@ Models for MakeSense.
 
 from django.db import models
 from djax.content import ACEContent, ContentManager, M2MFieldConverter
+from django.conf import settings
 
 class Book(models.Model,ACEContent):
     """ 
@@ -93,6 +94,15 @@ class Chapter(models.Model,ACEContent):
         except Chapter.DoesNotExist:
             return None
     
+    def get_page_count_offset(self):
+        """
+        Returns the total number of pages of chapters preceding this one.
+        """
+        if self.has_previous_chapter():
+            return self.previous_chapter().get_page_count_offset() + self.pages.count()
+        else:
+            return self.pages.count()
+    
     class Meta:
         unique_together = (('book','order'),)
         ordering = ['order']
@@ -130,6 +140,15 @@ class Page(models.Model,ACEContent):
         Gets 1-indexed page number.
         """
         return self.ordering + 1
+    
+    def offset_page_number(self):
+        """
+        Gets 1-indexed page number, offset by chapter offset.
+        """
+        if self.chapter.has_previous_chapter():
+            return self.page_number() + self.chapter.previous_chapter().get_page_count_offset()
+        else:
+            return self.page_number()
     
     def term_usage(self,term):
         """

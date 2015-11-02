@@ -4,6 +4,7 @@ Views for maksense.
 from makesense.utils import template
 from makesense.models import Chapter, Page, Term
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 
 book_title = 'How To Make Sense of Any Mess'
 
@@ -31,13 +32,21 @@ def chapter(request,chapter_num,slug):
     return {'chapter':chapter_model}
 
 @template('makesense/page.html')
-def page(request,page_num,slug):
+def page(request,chapter_num,page_num,slug):
     """ 
     The 'page' page.
     """
+    chapter_model = get_object_or_404(Chapter,book__title=book_title,order=chapter_num)
+    page_model = chapter_model.pages.get(slug=slug)
+    return {'page':page_model}
+
+def page_redirect(request,page_num,slug):
+    """
+    Redirects to canonical page URL.
+    """
     ordering = int(page_num) - 1
     page_model = get_object_or_404(Page,ordering=ordering,slug=slug)
-    return {'page':page_model}
+    return HttpResponseRedirect('/chapter/%d/page/%d/%s/' % (page_model.chapter.order,page_model.ordering,page_model.slug))
 
 @template('makesense/term.html')
 def term(request,word_type_slug,term_slug):
