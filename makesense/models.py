@@ -225,7 +225,7 @@ class Page(models.Model,ACEContent):
             'title':'title',
             'body':'body',
             'graphic':'graphic',
-            'secondary_graphic':'secondary_graphic',
+            'graphic2':'secondary_graphic',
             'slug':'slug',
             'ordering':'ordering',
             'is_supporting_material':'supporting_material_prop',
