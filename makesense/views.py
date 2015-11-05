@@ -2,7 +2,7 @@
 Views for maksense.
 """
 from makesense.utils import template
-from makesense.models import Chapter, Page, Term
+from makesense.models import Chapter, Page, Term, TermAlternative
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 
@@ -64,6 +64,22 @@ def search(request):
     query = request.GET.get('q',None)
     if not query:
         return {'results':None,'query':None}
+    
+    # if the search query matches a term, redirect to the term page
+    term = None
+    try:
+        term = Term.objects.get(term__iexact=query)
+    except Term.DoesNotExist:
+        try:
+            term_alt = TermAlternative.objects.get(alternative_term__iexact=query)
+            term = term_alt.term
+        except TermAlternative.DoesNotExist:
+            pass
+    
+    if term:
+        return HttpResponseRedirect('/term/%s/%s/' % (term.word_type_slug,term.term_slug))
+        
+        
     results = Page.objects.search(query)
     return {'results':results,'query':query}
 
