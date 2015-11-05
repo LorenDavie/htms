@@ -155,9 +155,9 @@
   <tr>
     {% for page_usage in row %}
     {% if page_usage.usage %}
-    <th class="pageCell" bgcolor="fbfc9d"><a href="/page/{{ page_usage.page.page_number }}/{{ page_usage.page.slug }}/">{{ page_usage.page.page_number }}</a></th>
+    <th class="pageCell" bgcolor="fbfc9d"><a href="/page/{{ page_usage.page.page_number }}/{{ page_usage.page.slug }}/">{{ page_usage.page.offset_page_number }}</a></th>
     {% else %}
-    <th class="pageCell">{{ page_usage.page.page_number }}</th>
+    <th class="pageCell">{{ page_usage.page.offset_page_number }}</th>
     {% endif %}
     {% endfor %}
   </tr>
