@@ -128,8 +128,13 @@
             </div>
             {% if page.graphic %}
             {% ifnotequal page.graphic 'None' %}
-            <img src="{{ STATIC_URL }}{{ page.graphic }}" alt="The politics of making sense involves moving through a messy human network">
+            <img src="{{ STATIC_URL }}{{ page.graphic }}">
             {% endifnotequal %}
+            {% endif %}
+            {% if page.secondary_graphic %}
+            {% ifnotequal page.secondary_graphic 'None' %}
+            <img src="{{ STATIC_URL }}{{ page.secondary_graphic }}">
+            {% endif %}
             {% endif %}
             <div id="Controls">
                 <hr>

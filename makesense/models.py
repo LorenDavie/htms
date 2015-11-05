@@ -124,6 +124,7 @@ class Page(models.Model,ACEContent):
     title = models.CharField(max_length=500)
     body = models.TextField()
     graphic = models.URLField(max_length=400,blank=True, null=True)
+    secondary_graphic = models.URLField(max_length=400,blank=True, null=True)
     slug = models.SlugField()
     ordering = models.IntegerField(default=0)
     is_supporting_material = models.BooleanField(default=False)
@@ -224,6 +225,7 @@ class Page(models.Model,ACEContent):
             'title':'title',
             'body':'body',
             'graphic':'graphic',
+            'secondary_graphic':'secondary_graphic',
             'slug':'slug',
             'ordering':'ordering',
             'is_supporting_material':'supporting_material_prop',
