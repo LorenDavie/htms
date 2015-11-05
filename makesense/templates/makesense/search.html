@@ -125,7 +125,7 @@
 {% endif %}
 {% if results %}
 {% for page in results %}
-<p><a href="/page/{{ page.page_number }}/{{ page.slug }}/">Chapter {{ page.chapter.order }}: {{ page.chapter }} | Page {{ page.page_number }} {{ page }} </a></p>
+<p><a href="/page/{{ page.page_number }}/{{ page.slug }}/">Chapter {{ page.chapter.order }}: {{ page.chapter }} | Page {{ page.page_number }} {{ page|safe }} </a></p>
 
 {{ page.body|safe }}
 <hr>
