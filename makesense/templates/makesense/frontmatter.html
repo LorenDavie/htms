@@ -7,8 +7,8 @@
 	<meta name="description" content="Information Architecture for Everybody. Based on a book by Information Architect, Abby Covert.">
 	<meta name="copyright" content="Copyright (c) 2015 Abby the IA">
 	<meta name="author" content="Abby Covert">
-    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
 	<style type="text/css" media="screen">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
 	
 /* Basic Text Styles (over-ridded by div specific styles below) */
 
@@ -18,8 +18,6 @@
 	a:hover {color:#ef1414;}
 	a:active {color: #000000;}
 	ul {list-style-type: none; margin:0;line-height: 1.4em;}
-    a.chapterlink {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
-    a.list-element {padding-left: 30px;}
 
 
 	h1 {font-family: helvetica; text-align: left; font-size: 1.5em; line-height:1.5em;}
@@ -50,7 +48,7 @@
 #search {float: right; width: 300px; margin: 20px; 120px; 10px; 10px; background:#ffffff;color: #ffffff;}
 	input[type="text"] {width: 180px; padding: 5px;}
 	input[type="submit"] {padding:7px; background-color: #000000; border: 1px solid #ffffff; color:#ffffff; text-decoration:none; font-weight: bold;}
-	input[type="submit"]:hover {color: ef1414;background-color:e3e2e2;}
+	#search input[type="submit"]:hover {color: ef1414;background-color:e3e2e2;}
 
 #footerWrapper {clear:both; padding-top: 30px;}
 #footer {clear:both; padding:5px 20px; width:800px; background:#000000;}
@@ -61,20 +59,14 @@
 
 /* Template Specific Styles */
 
-#Cover {padding:5px 5px 5px 5px; background:#ffffff;}
-	#Cover h1 {font-family: helvetica; text-align: left; font-size: 4em; line-height:.25em;}
-	#Cover h2 {color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
-	#Cover a:link{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
-	#Cover a:visited{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
-	#Cover a:hover{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
-	#Cover a:active{color: #ef1414; font-family: helvetica; text-align: left; font-size: 1.25em; line-height:1em;}
-
-#Chapter {background-color: ffffff;float:left; min-width:400px; padding:0px 10px; 0px; 50px;}
-
-#Lessons {border-style: solid; border-width: thin; border-color: #dcdcdc; background: #ffffff; overflow:hidden; width:240px; padding:3px 60px 10px 20px; Float:right;}
-	#Lessons h3{font-size: 1em; font-family: helvetica; color: ef1414;}
-	#Lessons a:link {font-size: 1em; text-decoration: none;}
-	#Lessons ul{list-style-type: none; line-height: 1.5em; padding: 2px;}
+#Resources {background-color: ffffff;float:left; margin-right:20px; max-width:400px; padding: 10px;}
+	#Resources ul { max-width: 320px;padding: 5px; line-height: 1.4em;}
+	#Resources li { padding 10px;}
+#Intro {border-style: solid; border-width: thin; border-color: #dcdcdc; background: #ffffff; overflow:hidden; width:240px; padding:3px 60px 10px 20px; Float:right;}
+	#Intro h3{font-family: helvetica; color: ef1414;}
+	#Intro a:link {font-size: 1.2em; line-height: 1.4em; text-decoration: none;}
+	#Intro li{line-height: 1.5em;}
+	#Intro h3{font-size: 2em;}
 
 /* Responsive Standard Styles */
 
@@ -94,11 +86,8 @@
 	#footer {width: 100%;}
 
 /* Responsive Template Specific Styles */
-	#Cover h1 {margin-left: 10px;font-family: helvetica; text-align: left; font-size: 3em; line-height:.25em;}
-	#Cover h2 {margin-left: 10px;color: #ef1414; font-family: helvetica; text-align: left; font-size: 1em; line-height:1em;}
-	#Chapter {float: none; margin-left:7px; width:auto; border:0;}
-	#Chapter h3 {font-size: 1em;}
-	#Lessons {float: none; width:auto;padding:13px;}
+
+	#Intro {float: none; width:320px; padding:13px;}
 
 }
 
@@ -106,9 +95,7 @@
 
 </head>
 <div class="wrapper">
-<div id="Cover"><h1>HOW <p>TO <p>MAKE<p> SENSE<p> OF ANY<p> MESS</h1>
-<h2><a href="http://www.abbytheia.com">by Abby Covert</a></h2>
-<br>
+<div id="header"><h1>How to Make Sense of Any Mess <a href="http://www.abbytheia.com">by Abby Covert<a></h1>
 </div>
 
 {% include 'makesense/includes/nav.html' %}
@@ -116,36 +103,23 @@
 </div>
 
 <div class="wrapper">
-<div id="Chapter">
-<h2><a name="Intro">Front Matter</a></h2>
-<h3><a href="/dedication/">Dedication</a></h3>
-<h3><a href="/introduction/">Introduction</a></h3>
-<h3><a href="/about/">About this book</a></h3>
-<h3><a href="/acknowledgements/">Acknowledgements</a></h3>
+
+<br>
+
+<div id="Resources">
+{% block content %}
+CONTENT GOES HERE
+{% endblock content %}
+
 </div>
-{% for chapter in chapters %}
-<div id="Chapter">
-<h2><a href="/chapter/{{ chapter.order }}/{{ chapter.slug }}/" class="chapterlink">Chapter {{ chapter.order }}: {{ chapter.name }}</a></h2>
-{% for page in chapter.main_pages %}
-<h3><a href="/chapter/{{ page.chapter.order }}/page/{{ page.offset_page_number }}/{{ page.slug }}/"{% if page.is_list_element %} class="list-element"{% endif %}>{{ page.title|safe }}</a></h3>
-{% endfor %}
-</div>
-{% if chapter.supporting_material.exists %}
-<div id="Lessons"><h3>Slide Decks &amp; Worksheets</h3>
-<ul>
-{% for supporting_page in chapter.supporting_material %}
-<li><a href="/page/{{ supporting_page.page_number }}/{{ supporting_page.slug }}/"><b>{{ supporting_page.supporting_material_type }}:</b> {{ supporting_page.title }}</a></li>
-{% endfor %}
-</ul>
-</div>
-{% endif %}
-{% endfor %}
-</div>
-<div id="Footerwrapper" class="wrapper">
+
+
+<div id="Footerwrapper">
 <div id="footer">
 <p>&#xA9; 2015 <a href="http://www.abbytheia.com">Abby the IA</a> | Powered by <a href="http://www.axilent.com">Axilent</a></p>
 </div>
 </div>
 </div>
+
 
 </html>

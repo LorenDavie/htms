@@ -12,6 +12,10 @@ class Book(models.Model,ACEContent):
     """
     title = models.CharField(max_length=100,unique=True)
     dedication = models.TextField(blank=True)
+    introduction = models.TextField(blank=True)
+    about = models.TextField(blank=True)
+    acknowledgements = models.TextField(blank=True)
+    resources = models.TextField(blank=True)
     
     def __unicode__(self):
         return self.title
@@ -21,6 +25,10 @@ class Book(models.Model,ACEContent):
         field_map = {
             'title':'title',
             'dedication':'dedication',
+            'introduction':'introduction',
+            'about':'about',
+            'acknowledgements':'acknowledgements',
+            'resources':'resources',
         }
 
 class Chapter(models.Model,ACEContent):

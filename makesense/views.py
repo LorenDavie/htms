@@ -2,7 +2,7 @@
 Views for maksense.
 """
 from makesense.utils import template
-from makesense.models import Chapter, Page, Term, TermAlternative
+from makesense.models import Chapter, Page, Term, TermAlternative, Book
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 
@@ -83,9 +83,42 @@ def search(request):
     results = Page.objects.search(query)
     return {'results':results,'query':query}
 
+@template('makesense/dedication.html')
+def dedication(request):
+    """ 
+    Book dedication.
+    """
+    book = Book.objects.get(title=book_title)
+    return {'book':book}
+
+@template('makesense/introduction.html')
+def introduction(request):
+    """ 
+    Book introduction.
+    """
+    book = Book.objects.get(title=book_title)
+    return {'book':book}
+
+@template('makesense/about.html')
+def about(request):
+    """ 
+    About the book.
+    """
+    book = Book.objects.get(title=book_title)
+    return {'book':book}
+
+@template('makesense/acknowledgements.html')
+def acknowledgements(request):
+    """ 
+    Acknowledgements.
+    """
+    book = Book.objects.get(title=book_title)
+    return {'book':book}
+
 @template('makesense/resources.html')
 def resources(request):
     """
     IA Resources.
     """
-    return {}
+    book = Book.objects.get(title=book_title)
+    return {'book':book}
