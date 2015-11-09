@@ -68,6 +68,17 @@
 	#Intro li{line-height: 1.5em;}
 	#Intro h3{font-size: 2em;}
 
+#Controls {text-align: center; width: 100%; min-width: 320px;  background:#ffffff;color: #000000;}
+#Controls ul {margin:0; padding:0; list-style:none;}
+#Controls li {text-align: center; display:inline; margin:0; padding:0;}
+#Controls a:link {text-decoration: none; color: #000000; font-family: garamond; padding:10px 10px 10px 10px;}
+#Controls a:visited {color: #000000;}
+#Controls a:hover {background: #ffffff; color:#ef1414;}
+#Controls a:active {color: #000000;}
+
+#Controls button {padding:10px; background-color: #000000; border: 1px solid #ffffff; color:#ffffff; text-decoration:none; font-weight: bold;}
+#Controls button:hover {color: ef1414; background-color:e3e2e2;}
+
 /* Responsive Standard Styles */
 
 @media screen and (max-width: 800px) {
@@ -111,6 +122,25 @@
 CONTENT GOES HERE
 {% endblock content %}
 
+</div>
+
+<div id="Controls">
+    <hr>
+    <br>
+    {% block controls %}
+    controls go here
+    {% endblock controls %}
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
 </div>
 
 
