@@ -4,6 +4,21 @@
 {{ book.about|safe }}
 {% endblock content %}
 
-{% block controls %}
+{% block control_panel %}
+<div id="Controls">
+    <hr>
+    <br>
     <a href="/introduction/">&lt; Previous Page</a><button>Page 3 of 160</button><a href="/acknowledgements/">Next Page &gt;</a>
-{% endblock controls %}
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>
+{% endblock control_panel %}

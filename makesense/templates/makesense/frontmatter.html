@@ -125,12 +125,11 @@ CONTENT GOES HERE
 
 </div>
 
+{% block control_panel %}
 <div id="Controls">
     <hr>
     <br>
-    {% block controls %}
     controls go here
-    {% endblock controls %}
     <table>
         <tr>
             <td></td>
@@ -143,6 +142,7 @@ CONTENT GOES HERE
         </tr>
     </table>
 </div>
+{% endblock control_panel %}
 
 
 <div id="Footerwrapper">
