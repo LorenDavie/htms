@@ -319,16 +319,20 @@ class Term(models.Model,ACEContent):
             chapter_rows = []
             column_index = 0
             current_row = []
+            page_index = 0
+            final_page_index = chapter.pages.count() - 1
             for page in chapter.pages.all():
                 usage = self.usage.filter(pk=page.pk).exists()
                 current_row.append({'page':page,'usage':usage})
-                if column_index == 4:
+                if (column_index == 4) or (page_index == final_page_index):
                     # this is the end of the row
                     chapter_rows.append(current_row)
                     current_row = []
                     column_index = 0
                 else:
                     column_index += 1
+                
+                page_index += 1
             
             chapter_list.append({'chapter':chapter,'chapter_rows':chapter_rows})
         
