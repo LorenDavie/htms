@@ -341,6 +341,12 @@ class Term(models.Model,ACEContent):
         
         return chapter_list
     
+    def ordered_usage(self):
+        """ 
+        Gets usage, but ordered by chapter, then page number.
+        """
+        return self.usage.all().order_by('chapter__order','ordering')
+    
     class Meta:
         unique_together = (('term','word_type'),)
         ordering = ['term']

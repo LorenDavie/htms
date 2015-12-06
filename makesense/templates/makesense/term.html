@@ -138,7 +138,7 @@
 <div id="Results">
 <hr>
 <p><b>The word <b>{{ term.term|lower }}</b> was used {{ term.total_usage }} times across {{ term.usage.count }} pages</b></p>
-{% for page in term.usage.all %}
+{% for page in term.ordered_usage %}
 <div class="usage-page">
 <hr>
 <p><a href="/page/{{ page.page_number }}/{{ page.slug }}/" class="page-header">Chapter {{ page.chapter.pk }}: {{ page.chapter }} | Page {{ page.offset_page_number }} </a></p>
