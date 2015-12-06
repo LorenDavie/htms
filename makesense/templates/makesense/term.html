@@ -151,6 +151,16 @@
 {% for chapter in term.usage_chapters %}
 <h3>Chapter {{ chapter.chapter.order }}</h3>
 <table class="tg">
+  {# header row #}
+  {% ifequal forloop.counter 1 %}
+  <tr>
+      <th class="pageCell"></th>
+      <th class="pageCell">1</th>
+      <th class="pageCell">2</th>
+      <th class="pageCell">3</th>
+      <th class="pageCell">4</th>
+  </tr>
+  {% endifequal %}
   {% for row in chapter.chapter_rows %}
   <tr>
     {% for page_usage in row %}
