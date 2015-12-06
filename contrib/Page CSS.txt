@@ -1,17 +1,3 @@
-{% load static %}
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>
-            How to Make Sense of Any Mess
-        </title>
-        <meta name="description" content="Information Architecture for Everybody. Based on a book by Information Architect, Abby Covert.">
-        <meta name="copyright" content="Copyright (c) 2015 Abby the IA">
-        <meta name="author" content="Abby Covert">
-        <style type="text/css" media="screen">
-
         /* Basic Text Styles (over-ridded by div specific styles below) */
 
         p {color: #000000; font-size: 1.2em;}
@@ -111,58 +97,3 @@
         img {max-width: 320px; min-width: 150px;}
 
         }
-
-        </style>
-    </head>
-    <body>
-        <div class="wrapper">
-            <div id="header">
-                <h1>
-                    How to Make Sense of Any Mess <a href="http://www.abbytheia.com">by Abby Covert</a>
-                </h1>
-            </div>
-            {% include 'makesense/includes/nav.html' %}
-        </div>
-        <div class="wrapper">
-            <div id="Page">
-                <h2>
-                    {{ page.title|safe }}
-                </h2>
-               {{ page.body|safe }}
-            </div>
-            {% if page.graphic %}
-            {% ifnotequal page.graphic 'None' %}
-            <img src="{{ STATIC_URL }}{{ page.graphic }}">
-            {% endifnotequal %}
-            {% endif %}
-            {% if page.secondary_graphic %}
-            {% ifnotequal page.secondary_graphic 'None' %}
-            <img src="{{ STATIC_URL }}{{ page.secondary_graphic }}">
-            {% endifnotequal %}
-            {% endif %}
-            <div id="Controls">
-                <hr>
-                <br>
-                {% if page.has_previous_page %}<a href="/chapter/{{ page.previous_page.chapter.order }}/page/{{ page.previous_page.offset_page_number }}/{{ page.previous_page.slug }}/">&lt; Previous Page</a>{% else %}<a href="/chapter/{{ page.chapter.order }}/{{ page.chapter.slug }}/">&lt; Previous Page</a>{% endif %}<button>Page {{ page.offset_page_number }} of 160</button>{% if page.next_page %}<a href="/chapter/{{ page.next_page.chapter.order }}/page/{{ page.next_page.offset_page_number }}/{{ page.next_page.slug }}/">Next Page &gt;</a>{% else %}{% if page.chapter.has_next_chapter %}<a href="/chapter/{{ page.chapter.next_chapter.order }}/{{ page.chapter.next_chapter.slug }}/">Next Page &gt;</a>{% endif %}{% endif %}
-                <table>
-                    <tr>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-            <div id="Footerwrapper">
-                <div id="footer">
-                    <p>
-                        © 2015 <a href="http://www.abbytheia.com">Abby the IA</a> | Powered by <a href="http://www.axilent.com">Axilent</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
