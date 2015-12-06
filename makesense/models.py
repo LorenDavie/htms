@@ -315,12 +315,22 @@ class Term(models.Model,ACEContent):
         Gets pages that use the term, organized into chapters.
         """
         chapter_list = []
+        chapter_index = 0
         for chapter in Chapter.objects.all():
             chapter_rows = []
             column_index = 0
             current_row = []
             page_index = 0
             final_page_index = chapter.pages.count() - 1
+            
+            # add front matter to first chapter
+            if chapter_index == 0:
+                header_row = []
+                for i in xrange(4):
+                    header_row_page = {'page':{'offset_page_number':i+1}}
+                    header_row.append({'page':header_row_page,'usage':None})
+                chapter_rows.append(header_row)
+            
             for page in chapter.pages.all():
                 usage = self.usage.filter(pk=page.pk).exists()
                 current_row.append({'page':page,'usage':usage})
@@ -335,6 +345,7 @@ class Term(models.Model,ACEContent):
                 page_index += 1
             
             chapter_list.append({'chapter':chapter,'chapter_rows':chapter_rows})
+            chapter_index += 1
         
         return chapter_list
     
