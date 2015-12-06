@@ -27,7 +27,7 @@ class Book(models.Model,ACEContent):
         total = settings.FRONT_MATTER_OFFSET
         for chapter in self.chapters.all():
             total += chapter.pages.count()
-            total += 1 # chapter cover page.
+            #total += 1 # chapter cover page.
         
         return total
     
