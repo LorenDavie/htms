@@ -326,7 +326,7 @@ class Term(models.Model,ACEContent):
             # add front matter to first chapter
             if chapter_index == 0:
                 header_row = []
-                for i in xrange(4):
+                for i in xrange(5):
                     header_row_page = {'page':{'offset_page_number':i+1}}
                     header_row.append({'page':header_row_page,'usage':None})
                 chapter_rows.append(header_row)
