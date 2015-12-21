@@ -5,6 +5,7 @@ from makesense.utils import template
 from makesense.models import Chapter, Page, Term, TermAlternative, Book
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
+from django.views.decorators.cache import cache_control
 
 book_title = 'How To Make Sense of Any Mess'
 
@@ -56,6 +57,7 @@ def term(request,word_type_slug,term_slug):
     term_model = get_object_or_404(Term,term_slug=term_slug,word_type_slug=word_type_slug)
     return {'term':term_model}
 
+@cache_control(private=True) # don't cache search results
 @template('makesense/search.html')
 def search(request):
     """

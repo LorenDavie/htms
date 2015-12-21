@@ -44,6 +44,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,6 +53,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'makesense.urls'
@@ -139,4 +141,14 @@ AXILENT_LIBRARY_API_KEY = os.environ.get('AXILENT_LIBRARY_API_KEY','')
 
 FRONT_MATTER_OFFSET = 4
 
+CACHES = {}
+if os.environ.get('MS_NOCACHE',None):
+    CACHES = {
+        'default': {
+                'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        },
+    }
+else:
+    from memcacheify import memcacheify
+    CACHES = memcacheify()
 
