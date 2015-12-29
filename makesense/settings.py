@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wn#(f)c38zurp+n@(18tktedcp(1sb3tk#n(d6+@-gua)&!^8t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ.get('MS_DEBUG',None) else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['howtomakesense.herokuapp.com','www.howtomakesenseofanymess.com']
 
 
 # Application definition
