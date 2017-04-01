@@ -3,10 +3,9 @@ Models for MakeSense.
 """
 
 from django.db import models
-from djax.content import ACEContent, ContentManager, M2MFieldConverter
 from django.conf import settings
 
-class Book(models.Model,ACEContent):
+class Book(models.Model):
     """ 
     The book.
     """
@@ -30,19 +29,8 @@ class Book(models.Model,ACEContent):
             #total += 1 # chapter cover page.
         
         return total
-    
-    class ACE:
-        content_type = 'Book'
-        field_map = {
-            'title':'title',
-            'dedication':'dedication',
-            'introduction':'introduction',
-            'about':'about',
-            'acknowledgements':'acknowledgements',
-            'resources':'resources',
-        }
 
-class Chapter(models.Model,ACEContent):
+class Chapter(models.Model):
     """ 
     A chapter in the book.
     """
@@ -125,17 +113,8 @@ class Chapter(models.Model,ACEContent):
     class Meta:
         unique_together = (('book','order'),)
         ordering = ['order']
-    
-    class ACE:
-        content_type = 'Chapter'
-        field_map = {
-            'book':'book',
-            'order':'order',
-            'name':'name',
-            'slug':'slug',
-        }
 
-class Page(models.Model,ACEContent):
+class Page(models.Model):
     """ 
     A page in the chapter (sort of a mini chapter).
     """
@@ -149,9 +128,7 @@ class Page(models.Model,ACEContent):
     is_supporting_material = models.BooleanField(default=False)
     supporting_material_type = models.CharField(null=True, max_length=100)
     download = models.URLField(null=True)
-    
-    objects = ContentManager()
-    
+        
     def __unicode__(self):
         return self.title
     
@@ -236,21 +213,6 @@ class Page(models.Model,ACEContent):
     
     class Meta:
         ordering = ['ordering']
-    
-    class ACE:
-        content_type = 'Page'
-        field_map = {
-            'chapter':'chapter',
-            'title':'title',
-            'body':'body',
-            'graphic':'graphic',
-            'graphic2':'secondary_graphic',
-            'slug':'slug',
-            'ordering':'ordering',
-            'is_supporting_material':'supporting_material_prop',
-            'supporting_material_type':'supporting_material_type',
-            'download':'download',
-        }
 
 class TermManager(models.Manager):
     """
@@ -272,7 +234,7 @@ class TermManager(models.Manager):
         
         return blocks
 
-class Term(models.Model,ACEContent):
+class Term(models.Model):
     """ 
     A lexicon term.
     """
@@ -350,18 +312,6 @@ class Term(models.Model,ACEContent):
     class Meta:
         unique_together = (('term','word_type'),)
         ordering = ['term']
-    
-    class ACE:
-        content_type = 'Term'
-        field_map = {
-            'term':'term',
-            'term_slug':'term_slug',
-            'word_type':'word_type',
-            'word_type_slug':'word_type_slug',
-            'description':'description',
-            #'usage':M2MFieldConverter('usage'),
-            #'alternatives':'alt_prop',
-        }
         
 
 class TermAlternative(models.Model):
