@@ -114,6 +114,18 @@ class Chapter(models.Model):
         unique_together = (('book','order'),)
         ordering = ['order']
 
+
+class PageManager(models.Manager):
+    """ 
+    Manager class for Page model.
+    """
+    def search(self,query):
+        """ 
+        Searches for pages.
+        """
+        from makesense.search import search_pages
+        return search_pages(query)
+
 class Page(models.Model):
     """ 
     A page in the chapter (sort of a mini chapter).
@@ -128,6 +140,8 @@ class Page(models.Model):
     is_supporting_material = models.BooleanField(default=False)
     supporting_material_type = models.CharField(null=True, max_length=100)
     download = models.URLField(null=True)
+    
+    objects = PageManager()
         
     def __unicode__(self):
         return self.title

@@ -151,3 +151,4 @@ else:
     from memcacheify import memcacheify
     CACHES = memcacheify()
 
+ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL','http://localhost:9200/')
