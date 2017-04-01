@@ -13,6 +13,7 @@ def index_page(page):
     """
     es.index('pages','page',{
         'content':page.body,
+        'pk':page.pk,
     },id=page.pk)
     
 def index_all_pages():
